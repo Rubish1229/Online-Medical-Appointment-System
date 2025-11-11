@@ -1,0 +1,736 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana;
+}
+:root{
+    --theme-color:#0D6DFD;
+    --theme-bgcolor:#e8f1ff;
+}
+
+
+
+.borderline{
+ border: 2px solid #0D6DFD;  
+ padding: 10px 12px; 
+ border-radius: 5px;
+ width: 130px;
+ height: 50px;
+ 
+
+
+}
+.navbar{
+    height: 8.1vh;
+    width: 100%;
+    border-bottom: 1px  solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+     box-shadow: 0px 5px 15px gray;
+     
+     
+     
+
+    
+    
+}
+nav{
+    position: fixed;
+     z-index: 10;
+     top: 0;
+     margin: 0;
+       height: 8.2vh;
+  width: 100%;
+  background-color: white;
+  
+    
+    }
+
+
+.logo img{
+    height: 60px;
+    width: 71px;
+    margin-top: -10px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+
+.nav-list ul{
+    list-style: none;
+    display: flex;
+    gap: 55px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
+   
+    
+}
+i{
+    font-size: 13px;
+    margin-bottom: 7px;
+
+}
+
+.nav-list ul li a{
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+   
+    
+}
+.nav-list ul li :hover{
+    color: #0D6DFD;
+ 
+    /* font-weight: bold; */
+    
+   
+    
+}
+
+.i-login{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 15px;
+    margin-top: 3px;
+      
+}
+.i-signup{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 2px solid #0D6DFD;
+    margin-right: 35px;
+    margin-top: 6px;
+    padding-top: 8px;
+    padding-left: 7px;
+    height: 35px;
+    width: 110px;
+      
+
+}
+
+.signup{
+    background-color: white;
+}
+.signup:hover{
+   background-color: #c1d5f3;
+}
+.p-login {
+margin-top: 10px;
+
+
+}
+.p-signup {
+margin-top: 10px;
+padding: 2px ;
+font-size: 15px;
+color: #0D6DFD;
+font-weight: bold;
+}
+
+
+
+.div1{
+    /* background-image: url('./images/img1.png'); */
+    height: 77vh;
+    width: 100%;
+    font-size: 60px;
+    color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    
+
+}
+.img1 {
+  background-image: url("images/img1.png");
+  background-size: cover;      
+  background-position: center;  
+  background-repeat: no-repeat;
+  
+  width: 100%;                  
+  height: 670px;                
+  /* display: flex; */
+  align-items: center;
+  padding-left: 50px;          
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  padding-top: 80px;
+  margin-top: 30px;
+  
+}
+
+.paragraphs{
+    margin: 100px 10px;
+}
+
+.p1{
+    font-size: 58px;
+}
+.p2{
+    font-size: 18px;
+}
+
+.get-started button{
+    margin-left: 15px;
+    margin-bottom: 90px;
+  
+}
+.btn .btn-primary{
+  transition: all 1s ease; 
+  
+}
+
+.btn:hover{
+transform: scale(1.02);
+
+}
+
+
+
+.steps{
+    height: 43vh;
+    width: 100%;
+    background-color: #0D6DFD;
+}
+.steps-div{
+   
+    padding: 50px 85px; 
+    color: white;
+    
+   
+}
+
+.box{
+    display: flex;
+    justify-content: space-between;
+}
+.steps-div1{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 122px;
+   
+}
+.one{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    color: #0D6DFD;
+    
+    
+}
+
+.one h4{
+    padding: 10px 17px;
+}
+
+.steps-div1 i{
+    font-size: 25px;
+
+}
+.line1{
+    height: 2px;
+    width: 200px;
+    background-color: white;
+    margin-top: 20px;
+}
+.desc h4{
+    margin-top: 20px;
+}
+
+.borderexample{
+    border: 2px solid green;
+}
+.departments,.hospitals{
+    
+    padding: 50px 85px;
+}
+
+.departmentfirst,.hospitalfirst,.doctorfirst,.healthfirst{
+    display: flex;
+    justify-content: space-between;
+}
+
+.departmentfirst a,.hospitalfirst a,.doctorfirst a{
+    text-decoration: none;
+    transition: all 0.9s ease-in-out;
+    
+}
+.departmentfirst a:hover,.hospitalfirst a:hover,.doctorfirst a:hover,.healthfirst a:hover{
+    background-color: #0D6DFD;
+    color: white;
+    
+}
+
+.hospitals{
+    height: 70vh;
+}
+.hospitalsecond{
+    margin-top: 30px;
+   
+}
+
+.departmentsecond ul,.hospitalsecond ul{
+    display: flex;
+align-items: center;
+justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px 120px;
+    padding: 20px 20px;
+    margin-top: 20px;
+}
+
+.departmentsecond ul li,.hospitalsecond ul li {
+    list-style: none;
+    text-align: center;
+    /* gap: 10px; */
+    transition: all 0.4s ease-in-out;
+    
+    
+    
+}
+
+.departmentsecond ul li:hover {
+ box-shadow: 0px  10px 10px #5398ff;
+
+}
+
+.hospitalsecond ul li:hover {
+  box-shadow: 0px 20px 10px #0D6DFD; 
+}
+
+.departmentsecond ul li :hover{
+    color: #0D6DFD;
+}
+
+.departmentsecond ul li i{
+color: #0D6DFD;
+font-size: 35px;
+/* border: 1px solid red; */
+padding: 30px 30px;
+border-radius: 7px;
+background-color: #e8f1ff;
+
+}
+
+.departmentsecond  a,.hospitalsecond  a{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.hospital-slider{
+    margin-left: 70px;
+}
+
+.doctor-section,.healthpackage-section {
+  /* text-align: center; */
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 12vh;
+}
+.doctorfirst,.healthfirst{
+    display: flex;
+    margin-left: -70px;
+    margin-right: -75px;
+}
+.doctorfirst a,.healthfirst a{
+    background-color: white;
+    color: #0056b3;
+}
+
+.doctor-section h2,.healthfirst h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.doctor-section p
+ {
+  color: #666;
+  margin-bottom: 20px;
+}
+.healthfirst a{
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+/* ====== SLIDER CONTAINER ====== */
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.doctor-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 25px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  width: 120vw; /* 4 cards visible (250px * 4) */
+  padding: 10px;
+}
+.hospital-slider{
+    display: flex;
+  flex-wrap: nowrap;
+  gap: 25px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  width: 78vw; /* 4 cards visible (250px * 4) */
+  padding: 10px;
+}
+
+/* ====== CARD DESIGN ====== */
+.doctor-card {
+  flex: 0 0 275px;
+  background: white;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px #0056b3; */
+  /* border: 1px solid black; */
+  padding: 10px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  background-color: #e8f1ff;
+
+}
+
+.hospital-card{
+      flex: 0 0 275px;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 5px #0D6DFD;
+  transition: all 0.5s ease-in-out;
+}
+
+.doctor-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.doctor-card h4, .doctor-card h5, .doctor-card h3 {
+  margin: 10px 0 5px;
+  color: #222;
+}
+
+.doctor-card p {
+  color: #666;
+  font-size: 14px;
+}
+
+.book-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.book-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ====== SLIDE BUTTONS ====== */
+.slide-btn {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  z-index: 2;
+  width: 40px;
+}
+
+.slide-btn i{
+    font-size: 20px;
+}
+
+.slide-btn:hover {
+  background-color: #007bff;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.left-btn {
+  position: absolute;
+  left: -42px;
+}
+
+.right-btn {
+  position: absolute;
+  right: -40px;
+}
+
+
+
+.healthsecond1{
+display: flex;
+margin: 20px 0px;
+/* gap: -40px;
+marg */
+margin-left: -20px;
+/* justify-content: space-around; */
+margin-bottom: 3px;
+gap: -28px;
+
+}
+
+.healthdiv1,.healthdiv2{
+  background-color: #d6249f;
+  margin-left: 20px;
+  height: 25vh;
+  width: 37vw;
+  padding-right: 30px;
+}
+/* .healthdiv2{
+  background-color: #d6249f;
+  margin-right: 52px;
+  height: 25vh;
+  width: 37vw;
+} */
+
+.healthsecond2{
+  display: flex;
+  gap: 10px;
+}
+
+.healthdiv3,.healthdiv4,.healthdiv5{
+  height: 15vh;
+  width: 25vw;
+  background-color: #fd5949;
+}
+
+
+
+
+.about{
+    /* background-color: #1fead9; */
+    height: 70vh;
+    width: 80vw;
+    flex-direction: row;
+    padding: 10px 10px;
+    margin: 0 auto;
+    margin-top: 10vh;
+    
+}
+
+.all{
+    height: 10vh;
+    background-color: #0D6DFD;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 20px 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.all:hover{
+    background-color: #307ef4;
+    
+}
+
+.description {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  background-color: #307ef4;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 0 20px;        /* padding starts as 0 */
+  margin-top: -8px;
+  overflow: hidden;
+  max-height: 0;          /* hidden height */
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    max-height 0.8s ease,
+    padding 0.6s ease,
+    visibility 0.6s;
+  pointer-events: none;
+  margin-bottom: 9px;
+}
+
+/* When hovered (show state) */
+.description.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  max-height: 200px;      /* adjust to fit your text */
+  padding: 10px 20px;     /* expands padding smoothly */
+}
+
+
+
+.lastpart{
+    height: 40vh;
+    width: 100%;
+    /* background-color: #0D6DFD; */
+    background: linear-gradient(to bottom, #0D6DFD, #98c9fd);
+    margin-top: 18vh;
+    display: flex;
+}
+
+.list{
+  /* margin: 60px 50px; */
+  padding: 30px 80px;
+}
+
+.list ul li a{
+  text-decoration: none;
+  list-style: none;
+  color: white;
+  
+}
+
+.list ul li a:hover{
+  color: #cbdbf3;
+}
+
+
+
+.list ul li{
+  list-style: none;
+}
+
+.list4 ul{
+  flex-direction: row;
+display: flex;
+gap: 14px;
+}
+
+span i{
+  font-size: 40px;
+  margin-top: 10px;
+  margin-left: 19px;
+  z-index: 10;
+
+}
+span i:hover{
+transform: scale(1.1);
+}
+
+.fa-instagram {
+  background: radial-gradient(circle at 30% 107%, 
+    #fdf497 0%, #fdf497 5%, 
+    #fd5949 45%, 
+    #d6249f 60%, 
+    #285AEB 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+
+.package-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 40px;
+}
+
+.package-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.package-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.large img{
+  height: 50px;
+}
+
+.package-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.package-item:hover img {
+  transform: scale(1.05);
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #0D47A1;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  opacity: 0.9;
+}
+
+.right-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bottom-row {
+  display: flex;
+  gap: 20px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.view-btn {
+  background: #2563eb;
+  color: white;
+  font-size: 18px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #1d4ed8;
+}
