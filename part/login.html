@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,18 +7,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h3>Welcome to login page!</h3>
+<?php   inlcude 'navbar.php'?>
 
     <div class="box">
         <div class="leftdiv">
+            
+                
+         
             <div class="leftdiv2">
                 <img src="/images/doctors.png" alt="doctorimg" class="img1">
                 
             </div>
+            
+        
+           </div>
+        <div class="rightdiv">
+
+            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">Login Page</h1>
+            <div class="category">
+                        <div class="patientCategory cat"> <button>Patient</button></div>
+                        <div class="doctorCategory cat"><button>Doctor</button></div>
+                        <div class="hospitalCategory cat"><button>Hospital</button></div>
+                    </div>
+            
+            <div class="doctorAvatar">
+                <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            
+
+            <div class="form">
+                <form action="">
+                    
+                    <div class="formLogin">
+                        <label for="Username">Username</label>
+                        <div class="inputBox">
+                            <i class="fa-regular fa-address-book"></i>
+                            <input type="text" placeholder="Enter username">
+                        </div>
+                    </div>
+                    <div class="formLogin">
+                        <label for="Username">Email</label>
+                        <div class="inputBox">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="text" placeholder="Enter email">
+                        </div>
+                    </div>
+                    <div class="formLogin">
+                        <label for="Username">Password</label>
+                        <div class="inputBox">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="text" placeholder="Enter password">
+                        </div>
+                    </div>
+                    <button class="doctorLogin" id="doctorLogin">Login</button>
+                </form>
+            </div>
         </div>
-        <div class="rightdiv"></div>
     </div>
 </body>
 </html>

@@ -25,15 +25,19 @@ width: 50%;
 border-top-left-radius: 11px;
 border-bottom-left-radius: 11px;
 }
-.leftdiv2{
-    /* background-color: rgb(238, 239, 239); */
+
+
+ .leftdiv2{
+    background-color: rgb(238, 239, 239); 
      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
     height: 79%;
     width: 70%;
     margin: 60px 70px ;
     border-radius: 20px;
+    
 }
+
 
 .leftdiv2 .img1{
     z-index: 2;
@@ -42,5 +46,140 @@ border-bottom-left-radius: 11px;
 }
 
 .rightdiv{
+    height: 100%;
+    width: 50%;
+
+}
+
+.category{
+    display: flex;
+    align-items: center;
+    gap:20px;
+
+    /* justify-content: space-around; */
+    margin-top: 20px;
+    margin-left: 78px;
+}
+.category button{
+    border-radius: 20%;
+    height: 30px;
+    width: 80px;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.5s ease-in;
+}
+.category button:hover{
+    transform: scale(1.05);
+}
+ .cat{
+    height: 30px;
+    width: 90px;
+ 
+}
+.patientCategory button{
+    background-color: white ;
+    font-weight: bold;
+}
+.doctorCategory button{
+    background-color: #0D6DFD;
+    color: white;
+    font-weight: bold;
+}
+.hospitalCategory button{
+    background-color: white;
+    font-weight: bold;
+}
+
+.rightdiv h1{
+    text-align: center;
+    margin-top: 20px;
+}
+.doctorAvatar{
+    background-color: rgb(236, 231, 231);
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctorAvatar i{
+font-size: 50px;
+color: #0D6DFD;
+/* margin: 50px 50%; */
+
+
+}
+.form{
+    margin-top: 50px;
     
+}
+.formLogin{
+    margin-top: 20px;
+}
+.formLogin label{
+    font-size: 15px;
+    color: gray;
+    position: absolute;
+    /* top: -10px; */
+  margin-left: 6vw;
+  margin-top: -8px;
+   background: white;
+  padding: 0 5px;
+  z-index: 4;
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  border: 2px solid #b5b5b5;
+  padding: 10px;
+  border-radius: 6px;
+  gap: 10px;
+  width: 20vw;
+  margin: auto;
+}
+
+.inputBox input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+.inputBox i{
+    color: gray;
+}
+
+.doctorLogin {
+    height: 34px;
+    width: 80px;
+    background-color: #4CAF50;
+    border-radius: 4px;
+    margin: 10px 190px;
+    font-size:16px;
+    cursor: pointer;
+
+ 
+  /* padding: 10px 20px; */
+  color: white;
+  border: none;
+  /* background-color: #4CAF50; */
+  animation: changeColor 2s infinite alternate;
+ 
+}
+
+
+@keyframes changeColor {
+  0% {
+    background: linear-gradient(to right, #4CAF50, #77c479);
+  }
+  50% {
+    background: linear-gradient(to left, #449946, #77c479);
+  }
+  100% {
+    background: linear-gradient(to top, #77c479, #65c568);
+  }
 }
