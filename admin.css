@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    background-color: aqua;
+    height: 60px;
+    width: 100%;
+    box-shadow: 0px 0px 5px;
+}
+
+nav img{
+    height: 60px;
+    width: 70px;
+}
+.mainDiv{
+    display: flex;
+    gap: 2px;
+    height: 682px;
+}
+.adminLeft{
+    width: 20%;
+    
+    background-color: blueviolet;
+}
+.adminRight{
+    background-color: brown;
+    width: 80%;
+}
