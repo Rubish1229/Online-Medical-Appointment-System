@@ -22,9 +22,9 @@ nav img{
 .adminLeft{
     width: 20%;
     
-    background-color: blueviolet;
+    background-color: rgb(202, 165, 236);
 }
 .adminRight{
-    background-color: rgb(225, 190, 190);
+    background-color: rgb(254, 231, 231);
     width: 80%;
 }

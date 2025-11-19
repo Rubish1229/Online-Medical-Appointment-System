@@ -4,17 +4,18 @@ require 'Connection.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $h_name = $_POST['hname'];
     $h_email = $_POST['hemail'];
+    $h_pwd = $_POST['hpwd'];
     $h_contact = $_POST['hcontact'];
     $h_address = $_POST['haddress'];
     $h_licensenum = $_POST['hlicensenum'];
 
 
-    $sql = "INSERT INTO hospital(h_name,h_email,h_contact,h_address,h_licensenum) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO hospital(h_name,h_email,h_pwd,h_contact,h_address,h_licensenum) VALUES (?,?,?,?,?,?)";
     $stmt = $con->prepare($sql);
-     $stmt-> bind_param("ssisi",$h_name,$h_email,$h_contact,$h_address,$h_licensenum);
+     $stmt-> bind_param("sssisi",$h_name,$h_email,$h_pwd,$h_contact,$h_address,$h_licensenum);
 
     if ($stmt->execute()) {
-        echo "Hospital registered successfully!";
+        echo "Doctor registered successfully!";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -40,6 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <label>Hospital email</label>
             <input type="text" name="hemail" placeholder="Hospital email"><br>
+
+                  <label>Hospital password</label>
+            <input type="text" name="hpwd" placeholder="Hospital password"><br>
 
             <label>Hospital contact</label>
             <input type="text" name="hcontact" placeholder="Hospital contact"><br>

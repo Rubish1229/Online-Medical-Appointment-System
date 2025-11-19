@@ -5,12 +5,12 @@
 require 'Connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $email = $_POST['demail'];
-    $pwd = $_POST['dpwd'];
+    $p_email = $_POST['pemail'];
+    $p_pwd = $_POST['ppwd'];
 
-    $sql = "SELECT * FROM doctor WHERE d_email = ? AND d_pwd = ?";
+    $sql = "SELECT * FROM patient WHERE p_email = ? AND p_pwd = ?";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("ss", $email, $pwd);
+    $stmt->bind_param("ss", $p_email, $p_pwd);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 
          
             <div class="leftdiv2">
-                <img src="./images/doctors.png" alt="doctorimg" class="img1">
+                <img src="./images/patientsignup.png" style="height:210px" alt="doctorimg" class="img1">
                 
             </div>
             
@@ -54,10 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
            </div>
         <div class="rightdiv">
 
-            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">Login Page</h1>
+            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">Patient Login Page</h1>
             <div class="category">
                         <div class="patientCategory cat"> <button>Patient</button></div>
-                        <div class="doctorCategory cat"><button>Doctor</button></div>
+                        <div class="doctorCategory cat" ><button>Doctor</button></div>
                         <div class="hospitalCategory cat"><button>Hospital</button></div>
                     </div>
             
@@ -80,17 +80,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <label for="Username">Email</label>
                         <div class="inputBox">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="text" name="demail" placeholder="Enter email">
+                            <input type="text" name="pemail" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="formLogin">
                         <label for="Username">Password</label>
                         <div class="inputBox">
                             <i class="fa-solid fa-key"></i>
-                            <input type="text" name="dpwd" placeholder="Enter password">
+                            <input type="text" name="ppwd" placeholder="Enter password">
                         </div>
                     </div>
-                    <button class="doctorLogin" id="doctorLogin">Login</button>
+                    <button class="doctorLogin" id="patientLogin">Login</button>
                 </form>
             </div>
         </div>

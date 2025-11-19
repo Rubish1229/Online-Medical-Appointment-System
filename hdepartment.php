@@ -1,3 +1,24 @@
+<?php
+require 'Connection.php';
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addDept'])) {
+    $dept = $_POST['newDepartment'];
+
+    $sql = "INSERT INTO department (dept_name) VALUES (?)";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("s", $dept);
+
+    if($stmt->execute()) {
+        echo "<script>alert('Department added successfully!');</script>";
+    } else {
+        echo "<script>alert('Error adding department');</script>";
+    }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +39,25 @@
         <div class="adminLeft hospitalleft">
             <ul>
                 <li> <a href="">Appoinments</a></li>
-                <li> <a href="">Departments</a></li>
+                <li> <a href="" style="color: green;">Departments</a></li>
                 <li> <a href="">Doctors</a></li>
                 <li> <a href="">Patients</a></li>
                
             </ul>
 </div>
         <div class="adminRight">
+            <div class="addDepartment">
+                <div class="h2">Add a new department</div>
+
+               
+            <form action="" method="POST">
+                <input type="text" name="newDepartment" placeholder="new department" required>
+                <button type="submit" name="addDept">ADD</button>
+            </form>
+            </div>
+
+
+        <h4>List of department</h4>
 
          <table border="1" cellpadding="6" class="tb">
         <tr>

@@ -2,19 +2,22 @@
 
 require 'Connection.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $h_name = $_POST['hname'];
-    $h_email = $_POST['hemail'];
-    $h_contact = $_POST['hcontact'];
-    $h_address = $_POST['haddress'];
-    $h_licensenum = $_POST['hlicensenum'];
+    $d_name = $_POST['dname'];
+    $d_department = $_POST['ddepartment'];
+    $d_contact = $_POST['dcontact'];
+    $d_address = $_POST['daddress'];
+    $d_email = $_POST['demail'];
+    $d_pwd = $_POST['dpwd'];
+    $d_gender=$_POST['dgender'];
+    $d_licensenum = $_POST['dlicensenum'];
 
 
-    $sql = "INSERT INTO hospital(h_name,h_email,h_contact,h_address,h_licensenum) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO doctor(d_name,d_department,d_contact,d_address,d_email,d_pwd,d_gender,d_licensenum) VALUES (?,?,?,?,?,?,?,?)";
     $stmt = $con->prepare($sql);
-     $stmt-> bind_param("ssisi",$h_name,$h_email,$h_contact,$h_address,$h_licensenum);
+     $stmt-> bind_param("sssssssi",$d_name,$d_department,$d_contact,$d_address,$d_email,$d_pwd,$d_gender,$d_licensenum);
 
     if ($stmt->execute()) {
-        echo "Hospital registered successfully!";
+        echo "Doctor registered successfully!";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -36,19 +39,46 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="form">
         <form action="" method="POST">
             <label>Hospital name</label>
-            <input type="text" name="hname" placeholder="Hospital name"><br>
+            <input type="text" name="dname" placeholder="Doctor name"><br>
 
-            <label>Hospital email</label>
-            <input type="text" name="hemail" placeholder="Hospital email"><br>
+            <!-- <label>Doctor department</label> create a dropdwn menu for deparment add department form hospital -->
+           <label>Select department</label>
 
-            <label>Hospital contact</label>
-            <input type="text" name="hcontact" placeholder="Hospital contact"><br>
+<select name="ddepartment" required >
+    <option value=""disabled selected hidden>-- Select department --</option>
 
-            <label>Hospital address</label>
-            <input type="text" name="haddress" placeholder="Hospital address"><br>
+    <?php
+        require 'Connection.php';
 
-            <label>Hospital license number</label>
-            <input type="text" name="hlicensenum" placeholder="Hospital license"><br>
+        $sql = "SELECT dept_name FROM department";
+        $result = $con->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='".$row['dept_name']."'>".$row['dept_name']."</option>";
+            }
+        }
+    ?>
+</select>
+
+            <label>Doctor contact</label>
+            <input type="phone" name="dcontact" placeholder="Doctor contact"><br>
+
+            <label>Doctor address</label>
+            <input type="text" name="daddress" placeholder="Doctor address"><br>
+
+            <label>Doctor email</label>
+            <input type="email" name="demail" placeholder="Doctor email"><br>
+
+            <label>Doctor password</label>
+            <input type="password" name="dpwd" placeholder="Doctor password"><br>
+
+            <label>Doctor gender</label>
+            <input type="radio" name="dgender" value="Male">Male<br>
+            <input type="radio" name="dgender" value="Female">Female<br>
+
+            <label>Doctor license number</label>
+            <input type="number" name="dlicensenum" placeholder="Doctor license"><br>
 
             <button type="submit">Signup</button>
         </form>
