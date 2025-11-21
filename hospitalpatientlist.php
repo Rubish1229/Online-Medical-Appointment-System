@@ -17,23 +17,53 @@ $result=$con->query($sql);
     <title>Document</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="hospital.css">
+
 </head>
 
 <style>
-    .tb {
-        width: 99%;               /* makes table full width */
-        border-collapse: collapse; /* single outline border */
-        margin:auto;
+    .table-responsive {
+  width: 98%;   
+  max-height: 500px;        /* full width container */
+  overflow-x: auto;      
+  overflow-y: auto;      
+       
+  -webkit-overflow-scrolling: touch;  /* smooth scrolling on mobile */
+  margin: auto;          /* center it if smaller */
+}
+     .tb{
+        /* width: 68%; */
+         border-collapse: collapse; 
+         margin:auto; 
+        
+     
+         -webkit-overflow-scrolling: touch; 
     }
     
+    
     .tb th, .tb td {
-        padding: 12px;            /* increase padding inside cells */
+        padding: 13px;           /* increase padding inside cells */
         border: 1px solid #000;   /* single clean border */
         text-align: left;
     }
     .tb th {
-        background:  #e3e3e3ff;;      /* optional: header background */
-    }
+        background: #0D6DFD; 
+        color: white;     /* optional: header background */
+    } 
+
+    .table-responsive::-webkit-scrollbar {
+  height: 10px;   
+  width: 10px;            /* scrollbar height (horizontal) or width (vertical) */
+  background-color: #b8d4ffff;  /* track background */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #0D6DFD;     /* scrollbar thumb color */
+  border-radius: 10px;        /* rounded corners */
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #555;     /* darker on hover */
+}
 </style>
 <body>
 
@@ -47,7 +77,7 @@ $result=$con->query($sql);
             <ul>
                 <li> <a href="">Appoinments</a></li>
                 <li> <a href="">Departments</a></li>
-                <li> <a href="">Doctors</a></li>
+                <li> <a href="hdoctorlist.php">Doctors</a></li>
                 <li> <a href="">Patients</a></li>
                
             </ul>
@@ -61,8 +91,9 @@ $result=$con->query($sql);
         echo "<br>";
         echo "<br>";
         ?>
+        <div class="table-responsive">
 
-         <table border="1" cellpadding="10" class="tb" class="tb">
+         <table border="1" cellpadding="6" class="tb">
         <tr>
             <th>PatientID</th>
             <th>PatientName</th>
@@ -72,7 +103,7 @@ $result=$con->query($sql);
             <th>PatientAddress</th>
             <th>Patientgender</th>
             <th>patient Signup date/time</th>
-        
+            <th>Actions</th>
         </tr>
         <?php
         if($result->num_rows>0)
@@ -87,12 +118,18 @@ $result=$con->query($sql);
                 echo "<td>".$row['p_address']."</td>";  
                 echo "<td>".$row['p_gender']."</td>";  
                 echo "<td>".$row['p_datetime']."</td>";  
-            
+               
+
+                echo"<td>
+                    <a href='hpatientupdate.php?p_id=".$row['p_id']."' class='update'>UPDATE</a> | 
+                    <a href='delpatientid=".$row['p_id']."' class='delete'>DELETE</a>  
+                </td>";
                 echo "</tr>";
             }
         }
 
         ?>
+        </div>
 
     </table>
     </form>

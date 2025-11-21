@@ -22,9 +22,14 @@ nav img{
 .adminLeft{
     width: 20%;
     
-    background-color: rgb(202, 165, 236);
+    background-color: #0D6DFD;
+    
+}
+
+.adminLeft ul li a{
+    color: white;
 }
 .adminRight{
-    background-color: rgb(254, 231, 231);
+    background-color: white;
     width: 80%;
 }

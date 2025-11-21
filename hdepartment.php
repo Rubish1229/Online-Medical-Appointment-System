@@ -14,6 +14,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addDept'])) {
         echo "<script>alert('Error adding department');</script>";
     }
 }
+
+$sql="SELECT * FROM department";
+$result=$con->query($sql);
 ?>
 
 
@@ -59,33 +62,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addDept'])) {
 
         <h4>List of department</h4>
 
+        <form action="" method="GET">
          <table border="1" cellpadding="6" class="tb">
         <tr>
-            <th>HospitalID</th>
-            <th>HospitalName</th>
-            <th>HospitalEmail</th>
-            <th>HospitalContact</th>
-            <th>HospitalAddress</th>
-            <th>HospitalLicenseNum</th>
-            <th>Signup date/time</th>
+            <th>DepartmentID</th>
+            <th>DepartmaentName</th>
             <th>Actions</th>
+            
         </tr>
         <?php
         if($result->num_rows>0)
         {
             while($row=$result->fetch_assoc()){
                 echo "<tr>";
-                echo "<td>".$row['h_id']."</td>";
-                echo "<td>".$row['h_name']."</td>";
-                echo "<td>".$row['h_email']."</td>";
-                echo "<td>".$row['h_contact']."</td>";
-                echo "<td>".$row['h_address']."</td>";  
-                echo "<td>".$row['h_licensenum']."</td>";  
-                echo "<td>".$row['h_createddate']."</td>";  
+                echo "<td>".$row['dept_id']."</td>";
+                echo "<td>".$row['dept_name']."</td>";
+                 
 
                 echo"<td>
-                    <a href='update.php?id=".$row['h_id']."'class='update'>UPDATE</a> | 
-                    <a href='delete.php?h_id=".$row['h_id']."'class='delete'>DELETE</a>  
+                    <a href='updatedepartment.php?dept_id=".$row['dept_id']."' class='update'>UPDATE</a> | 
+                    <a href='deldepartment.php?dept_id=".$row['dept_id']."' class='delete'>DELETE</a>  
                 </td>";
                 echo "</tr>";
             }
@@ -94,6 +90,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addDept'])) {
         ?>
 
     </table>
+    </form>
 
         
         </div>

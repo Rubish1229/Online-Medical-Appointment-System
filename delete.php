@@ -4,6 +4,7 @@
 
 require 'Connection.php';
 
+//adminpage 
 $id=$_GET['h_id'];
  $sql="DELETE FROM hospital WHERE h_id=$id";
 
@@ -11,4 +12,7 @@ $id=$_GET['h_id'];
     header("Location : admin.php");
  }else echo "Error in deleteion!";
 
+
+
+ 
 ?>
