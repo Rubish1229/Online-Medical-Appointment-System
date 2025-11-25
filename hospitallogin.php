@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($result->num_rows == 1) {
         echo "Login successful!";
-        header("Location: admin.php"); 
+        header("Location: hpatientbooklist.php"); 
     } else {
         echo "Invalid email or password!";
     }
@@ -37,16 +37,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+<style>
+
+</style>
 <body>
+<?php include 'navbar.php' ?>
+    <div class="patientSignupBox">
+    <div class="category">
+                <div class="patientCategory cat"> <button style="background-color: #0D6DFD;"><a href="patientlogin.php" style="color: white; "> Patient</a></button></div>
+                <div class="doctorCategory cat"><button style="background-color: white;"><a href="samplelogin.php" style="color: black; "> Doctor</a></button></div>
+                <div class="hospitalCategory cat"><button><a href="hospitalsignup.php">Hospital</a></button></div>
+            </div>
 
-
-    <div class="box">
+    <div class="box" style="margin-top: 50px;">
         <div class="leftdiv">
             
                 
          
-            <div class="leftdiv2">
-                <img src="./images/hospitalImg.png" alt="doctorimg" class="img1">
+            <div class="leftdiv2 ">
+                <img src="./images/hospitalImg.png" alt="doctorimg" class="img1" style="margin-top:125px; margin-left:-30px;">
                 
             </div>
             
@@ -56,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">Login Page</h1>
             <div class="category">
-                        <div class="patientCategory cat"> <button>Patient</button></div>
-                        <div class="doctorCategory cat" ><button>Doctor</button></div>
-                        <div class="hospitalCategory cat"><button>Hospital</button></div>
+                        <div class="patientCategory cat"><a href="patientlogin.php"> <button>Patient</button></a></div>
+                        <div class="doctorCategory cat" ><a href="patientlogin.php"> <button style="background-color:white; color:black;">Doctor</button></a></div>
+                        <div class="hospitalCategory cat"><button style="background-color:#0D6DFD; color:white;">Hospital</button></div>
                     </div>
             
             <div class="doctorAvatar">
@@ -70,12 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <form action="" method="POST">
                     
                     <div class="formLogin">
-                        <label for="Username">Username</label>
-                        <div class="inputBox">
-                            <i class="fa-regular fa-address-book"></i>
-                            <input type="text" placeholder="Enter username">
-                        </div>
-                    </div>
+                       
                     <div class="formLogin">
                         <label for="Username">Email</label>
                         <div class="inputBox">

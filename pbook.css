@@ -7,9 +7,25 @@
 .pbookform{
     height: 80%;
     width: 70%;
-    margin: auto;
-    margin-top: 50px;
+    margin: 50px auto;
     /* background-color: rgb(252, 166, 166); */
     border: 1px solid black;
     border-radius: 10px;
+    padding: 20px 40px;
+    
+}
+
+.pbookformdiv1{
+    height: 50px;
+    background-color: rgb(212, 212, 212);
+}
+
+.pbookleft a{
+ text-decoration: none;
+ 
+}
+.pbookleft li{
+    margin-top: 60px;
+    list-style: none;
+    text-align: center;
 }

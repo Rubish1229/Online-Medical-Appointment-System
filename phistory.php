@@ -1,8 +1,30 @@
 <?php
-
+session_start();
 require 'Connection.php';
 
-$sql="SELECT * FROM patient";
+if (!isset($_SESSION['p_id'])) {
+    die("Please login first.");
+}
+
+$patient_id = $_SESSION['p_id'];
+
+$sql = "SELECT 
+            medicalcard.card_id,
+            medicalcard.patient_id,
+            medicalcard.patientName,
+            medicalcard.patientAge,
+            medicalcard.patientGender,
+            medicalcard.patientAddress,
+            medicalcard.patientContact,
+            sampledoctor.d_name,
+            medicalcard.departmentName,
+            medicalcard.appointment_date,
+            medicalcard.appointment_time,
+            medicalcard.diagnosis,
+            medicalcard.prescription
+        FROM medicalcard
+        JOIN sampledoctor ON medicalcard.doctor_id = sampledoctor.d_id
+        WHERE medicalcard.patient_id = $patient_id";
 $result=$con->query($sql);
 
 ?>
@@ -17,38 +39,27 @@ $result=$con->query($sql);
     <title>Document</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="hospital.css">
+    <link rel="stylesheet" href="pbook.css">
+    <link rel="stylesheet" href="./part/login.css">
 </head>
 
 <style>
-    .tb {
-        width: 99%;               /* makes table full width */
-        border-collapse: collapse; /* single outline border */
-        margin:auto;
-    }
-    
-    .tb th, .tb td {
-        padding: 12px;            /* increase padding inside cells */
-        border: 1px solid #000;   /* single clean border */
-        text-align: left;
-    }
-    .tb th {
-        background:  #e3e3e3ff;;      /* optional: header background */
-    }
+   .adminRight h2{
+    margin-top: 30px;
+   }
+
 </style>
 <body>
 
-<nav>
-        <img src="images/SWASTHYA.png" alt="logo">
-    </nav>
+<?php include 'navbar.php';?>
 
     
     <div class="mainDiv">
-        <div class="adminLeft hospitalleft">
+        <div class="adminLeft pbookleft">
             <ul>
-                <li> <a href="">Appoinments</a></li>
-                <li> <a href="">Departments</a></li>
-                <li> <a href="">Doctors</a></li>
-                <li> <a href="">Patients</a></li>
+                <li> <a href="pbook.php">Appoinments</a></li>
+                <li> <a href="phistory.php" style="color:orange">Medical history</a></li>
+                
                
             </ul>
 </div>
@@ -56,45 +67,50 @@ $result=$con->query($sql);
 
         <form action="GET">
         <?php
-        echo "<h3>Patients signup lists</h3>";
+        echo "<h2>Patient Medical history</h2>";
         echo "<br>";
-        echo "<br>";
-        echo "<br>";
+  
         ?>
 
-         <table border="1" cellpadding="10" class="tb" class="tb">
-        <tr>
-            <th>PatientID</th>
-            <th>PatientName</th>
-            <th>PatientEmail</th>
-            <th>Patientpwd</th>
-            <th>PatientContact</th>
-            <th>PatientAddress</th>
-            <th>Patientgender</th>
-            <th>patient Signup date/time</th>
-        
-        </tr>
-        <?php
-        if($result->num_rows>0)
-        {
-            while($row=$result->fetch_assoc()){
-                echo "<tr>";
-                echo "<td>".$row['p_id']."</td>";
-                echo "<td>".$row['p_name']."</td>";
-                echo "<td>".$row['p_email']."</td>";
-                echo "<td>".$row['p_pwd']."</td>";
-                echo "<td>".$row['p_contact']."</td>";
-                echo "<td>".$row['p_address']."</td>";  
-                echo "<td>".$row['p_gender']."</td>";  
-                echo "<td>".$row['p_datetime']."</td>";  
-            
-                echo "</tr>";
-            }
-        }
+        <div class="card-container">
 
-        ?>
+<?php
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+?>
+        <div class="appointment-card">
+            <h3><?= $row['patientName'] ?></h3>
 
-    </table>
+            <p><strong>Gender:</strong> <?= $row['patientGender'] ?></p>
+            <p><strong>Age:</strong> <?= $row['patientAge'] ?></p>
+            <p><strong>Contact:</strong> <?= $row['patientContact'] ?></p>
+            <p><strong>Address:</strong> <?= $row['patientAddress'] ?></p>
+
+            <hr>
+
+            <p><strong>Doctor:</strong> <?= $row['d_name'] ?></p>
+            <p><strong>Department:</strong> <?= $row['departmentName'] ?></p>
+
+            <hr>
+
+            <p><strong>Diagnosis:</strong> <?= $row['diagnosis'] ?></p>
+            <p><strong>Prescription:</strong> <?= $row['prescription'] ?></p>
+
+            <hr>
+
+            <p><strong>Date:</strong> <?= $row['appointment_date'] ?></p>
+            <p><strong>Time:</strong> <?= $row['appointment_time'] ?></p>
+        </div>
+        <br>
+        <br>
+        <br>
+<?php
+    }
+}
+?>
+
+</div>
+
     </form>
 
         

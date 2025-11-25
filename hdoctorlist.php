@@ -2,7 +2,7 @@
 
 require 'Connection.php';
 
-$sql="SELECT * FROM doctor";
+$sql="SELECT * FROM sampledoctor";
 $result=$con->query($sql);
 
 ?>
@@ -15,6 +15,7 @@ $result=$con->query($sql);
     <title>Document</title>
      <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="hospital.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <style>
@@ -64,24 +65,21 @@ $result=$con->query($sql);
 </style>
 <body>
     
-
-<nav>
-        <img src="images/SWASTHYA.png" alt="logo">
-    </nav>
+<?php include'navbar.php'  ?>
 
     
     <div class="mainDiv">
         <div class="adminLeft hospitalleft">
             <ul>
-                <li> <a href="">Appoinments</a></li>
-                <li> <a href="">Departments</a></li>
-                <li> <a href="">Doctors</a></li>
+                <li> <a href="">Booking lists</a></li>
+                <li> <a href="hdepartment.php">Patient Signup list</a></li>
+                <li> <a href="hdoctorlist.php">Doctor Signup list</a></li>
                 <li> <a href="hospitalpatientlist.php">Patients</a></li>
                
             </ul>
 </div>
         <div class="adminRight">
-
+        <br>
         <form action="GET">
         <?php
         echo "<h3>Doctors signup lists</h3>";
@@ -98,12 +96,13 @@ $result=$con->query($sql);
             <th>DoctorName</th>
             <th>DoctorEmail</th>
             <th>Doctorpwd</th>
-            <th>DoctorDepartment</th>
-            <th>Doctorlicensenum</th>
-            <th>DoctorContact</th>
-            <th>DoctorAddress</th>
             <th>DoctorGender</th>
+            <th>DoctorAddress</th>
+            <th>DoctorContact</th>
+            <th>DoctorLicenseNum</th>
             <th>Doctor Signup date/time</th>
+            <th>Department_id</th>
+            <th>Department_name</th>
             <th>Actions</th>
         </tr>
         <?php
@@ -115,13 +114,14 @@ $result=$con->query($sql);
                 echo "<td>".$row['d_name']."</td>";
                 echo "<td>".$row['d_email']."</td>";
                 echo "<td>".$row['d_pwd']."</td>";
-                echo "<td>".$row['d_department']."</td>";
-                echo "<td>".$row['d_licensenum']."</td>";
-                echo "<td>".$row['d_contact']."</td>";
-                echo "<td>".$row['d_address']."</td>";  
                 echo "<td>".$row['d_gender']."</td>";  
+                echo "<td>".$row['d_address']."</td>";  
+                echo "<td>".$row['d_contact']."</td>";
+                echo "<td>".$row['d_licensenum']."</td>";
                 echo "<td>".$row['d_signupdatetime']."</td>";  
-               
+                echo "<td>".$row['department_id']."</td>";
+                echo "<td>".$row['department_name']."</td>";
+                
 
                 echo"<td>
                     <a href='hdoctorupdate.php?d_id=".$row['d_id']."' class='update'>UPDATE</a> | 

@@ -16,6 +16,7 @@ $result=$con->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="hospital.css">
 
 </head>
@@ -67,9 +68,10 @@ $result=$con->query($sql);
 </style>
 <body>
 
-<nav>
-        <img src="images/SWASTHYA.png" alt="logo">
-    </nav>
+<?php include 'navbar.php'  ?>
+
+
+ 
 
     
     <div class="mainDiv">
@@ -83,6 +85,8 @@ $result=$con->query($sql);
             </ul>
 </div>
         <div class="adminRight">
+            <br>
+            
 
         <form action="GET">
         <?php

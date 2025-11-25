@@ -17,7 +17,8 @@ nav img{
 .mainDiv{
     display: flex;
     gap: 2px;
-    height: 615px;
+    height: 620px;
+    margin-top: 54.5px;
 }
 .adminLeft{
     width: 20%;
@@ -32,4 +33,5 @@ nav img{
 .adminRight{
     background-color: white;
     width: 80%;
+    
 }

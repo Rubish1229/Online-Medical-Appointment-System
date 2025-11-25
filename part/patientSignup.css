@@ -1,0 +1,42 @@
+*{
+    
+    margin: 0;
+    padding: 0;
+  box-sizing: border-box;
+}
+
+.patientSignupBox{
+    border: 1px solid #0D6DFD;
+    height: 500px;
+    width: 700px;
+    margin: 80px auto;
+    text-align: center;
+    
+}
+.form{
+    margin: 50px 20px;
+    padding: 20px 0px;
+}
+.sampleSignupbtn{
+    background-color: #0D6DFD;
+    color: white;
+    height: 40px;
+    width: 80px;
+    margin: 50px 300px;
+    cursor: pointer;
+}
+
+.patientSignupBox1,.patientSignupBox2,.patientSignupBox3,.patientSignupBox4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    
+}
+.form{
+    margin-top: 50px;
+
+    border: 2px solid #0D6DFD;
+    
+}

@@ -9,7 +9,7 @@ if (!isset($_GET['d_id']) || empty($_GET['d_id'])) {
 $id = $_GET['d_id'];
 
 
-$sql = "SELECT * FROM doctor WHERE d_id = $id";
+$sql = "SELECT * FROM sampledoctor WHERE d_id = $id";
 $result = $con->query($sql);
 
 if ($result->num_rows == 0) {
@@ -23,26 +23,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = $_POST['d_name'];
     $email = $_POST['d_email'];
     $pwd = $_POST['d_pwd'];
-    $department = $_POST['d_department'];
-    $licensenum = $_POST['d_licensenum'];
-    $contact = $_POST['d_contact'];
-    $address = $_POST['d_address'];
     $gender = $_POST['d_gender'];
+    $address = $_POST['d_address'];
+    $contact = $_POST['d_contact'];
+    $licensenum = $_POST['d_licensenum'];
+    
 
-    $update = "UPDATE doctor SET
+    $update = "UPDATE sampledoctor SET
                 d_name='$name',
                 d_email='$email',
                 d_pwd='$pwd',
-                d_pwd='$department',
-                d_pwd='$licensenum',
-                d_contact='$contact',
+                d_gender='$gender',
                 d_address='$address',
-                d_gender='$gender'
+                d_contact='$contact',
+                d_licensenum='$licensenum'
                 WHERE d_id=$id";
 
     if ($con->query($update)) {
        
-        header("Location:h  doctorlist.php ");
+        header("Location:hdoctorlist.php ");
     } else {
         echo "Update error: " . $con->error;
     }
@@ -88,10 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <label>Password:</label><br>
             <input type="text" name="d_pwd" value="<?php echo $doctor['d_pwd']; ?>"><br><br>
 
-             <label>Department:</label><br>
-            <input type="text" name="d_department" value="<?php echo $doctor['d_department']; ?>"><br><br>
-
-             <label>Password:</label><br>
+             <label>Licensenum:</label><br>
             <input type="number" name="d_licensenum" value="<?php echo $doctor['d_licensenum']; ?>"><br><br>
 
             <label>Contact:</label><br>

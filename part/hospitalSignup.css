@@ -1,0 +1,24 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sampleSignupbtn{
+    background-color: #0D6DFD;
+    color: white;
+    height: 40px;
+    width: 80px;
+    margin: 50px 350px;
+    cursor: pointer;
+}
+
+.hospitalSignupBox1,.hospitalSignupBox2,.hospitalSignupBox3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    
+}
