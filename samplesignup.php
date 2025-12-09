@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $department_name = $depRow['dept_name'];
 
     // Insert into sampledoctor table
-    $sql = "INSERT INTO sampledoctor(d_name, department_id, department_name, d_contact, d_address, d_email, d_pwd, d_gender, d_licensenum)
-            VALUES (?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO sampledoctor(d_name, department_id, d_contact, d_address, d_email, d_pwd, d_gender, d_licensenum)
+            VALUES (?,?,?,?,?,?,?,?)";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sissssssi", $d_name, $department_id, $department_name, $d_contact, $d_address, $d_email, $d_pwd, $d_gender, $d_licensenum);
+    $stmt->bind_param("sisssssi", $d_name, $department_id, $d_contact, $d_address, $d_email, $d_pwd, $d_gender, $d_licensenum);
 
     if ($stmt->execute()) {
         echo "Doctor registered successfully!";

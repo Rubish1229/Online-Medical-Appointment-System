@@ -3,8 +3,8 @@
 <?php
 $server="127.0.0.1:3307";
 $username="root";
-$password="root";
-$database="projectfirst";
+$password="";
+$database="medical";
 
 
 $con=mysqli_connect($server,$username,$password,$database);
