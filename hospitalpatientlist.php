@@ -18,86 +18,46 @@ $result=$con->query($sql);
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="hospital.css">
+    <link rel="stylesheet" href="./css/utility.css">
 
 </head>
 
 <style>
-    .table-responsive {
-  width: 98%;   
-  max-height: 500px;        /* full width container */
-  overflow-x: auto;      
-  overflow-y: auto;      
-       
-  -webkit-overflow-scrolling: touch;  /* smooth scrolling on mobile */
-  margin: auto;          /* center it if smaller */
+h3{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 20px;
 }
-     .tb{
-        /* width: 68%; */
-         border-collapse: collapse; 
-         margin:auto; 
-        
-     
-         -webkit-overflow-scrolling: touch; 
-    }
     
-    
-    .tb th, .tb td {
-        padding: 13px;           /* increase padding inside cells */
-        border: 1px solid #000;   /* single clean border */
-        text-align: left;
-    }
-    .tb th {
-        background: #0D6DFD; 
-        color: white;     /* optional: header background */
-    } 
-
-    .table-responsive::-webkit-scrollbar {
-  height: 10px;   
-  width: 10px;            /* scrollbar height (horizontal) or width (vertical) */
-  background-color: #b8d4ffff;  /* track background */
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-  background-color: #0D6DFD;     /* scrollbar thumb color */
-  border-radius: 10px;        /* rounded corners */
-}
-
-.table-responsive::-webkit-scrollbar-thumb:hover {
-  background-color: #555;     /* darker on hover */
-}
 </style>
 <body>
 
 <?php include 'navbar.php'  ?>
 
 
- 
+   
+<div class="patientBookingList">
 
-    
-    <div class="mainDiv">
-        <div class="adminLeft hospitalleft">
+<div class="patientBookingListLeft">
             <ul>
-                <li> <a href="">Appoinments</a></li>
-                <li> <a href="">Departments</a></li>
-                <li> <a href="hdoctorlist.php">Doctors</a></li>
-                <li> <a href="">Patients</a></li>
-               
-            </ul>
+            <li><a href="hpatientbooklist.php">Booking list</a></li>
+        <li><a href="hospitalpatientlist.php"style="color:orange;" >Patient signup list</a></li>
+        <li><a href="hdoctorlist.php">Doctor signup list</a></li>
+        <li><a href="hdepartment.php">Department list</a></li>
+        </ul>
 </div>
-        <div class="adminRight">
-            <br>
-            
 
+
+
+     <div class="patientBookingListRight">
+          
         <form action="GET">
         <?php
         echo "<h3>Patients signup lists</h3>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+      
         ?>
-        <div class="table-responsive">
-
-         <table border="1" cellpadding="6" class="tb">
+        <div class="booking-table">
+    <table style="border-collapse: collapse;">
         <tr>
             <th>PatientID</th>
             <th>PatientName</th>
@@ -121,14 +81,18 @@ $result=$con->query($sql);
                 echo "<td>".$row['p_contact']."</td>";
                 echo "<td>".$row['p_address']."</td>";  
                 echo "<td>".$row['p_gender']."</td>";  
-                echo "<td>".$row['p_datetime']."</td>";  
+                echo "<td>".$row['p_signupdatetime']."</td>";  
                
 
-                echo"<td>
-                    <a href='hpatientupdate.php?p_id=".$row['p_id']."' class='update'>UPDATE</a> | 
-                    <a href='delpatientid=".$row['p_id']."' class='delete'>DELETE</a>  
-                </td>";
-                echo "</tr>";
+
+                  echo "<td>
+        <div class='action-buttons'>
+            <a href='hpatientupdate.php?p_id=".$row['p_id']."' class='update'>UPDATE</a> | 
+            <a href='delpatientid.php?delete_id=".$row['p_id']."' class='delete'>DELETE</a>
+        </div>
+      </td>";
+echo "</tr>";
+
             }
         }
 

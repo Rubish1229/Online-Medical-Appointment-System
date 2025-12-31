@@ -48,11 +48,24 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Appointments</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="./css/utility.css">
 </head>
 <style>
     h3{
         text-align: center;
         margin: 20px 0px;
+    }
+    td a{
+        text-decoration: none;
+        
+    }
+    .newbtn{
+        height: 20px;
+        width: 40px;
+        background-color: #0D6DFD;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
     }
 </style>
 <body>
@@ -97,7 +110,8 @@ if ($result->num_rows > 0) {
             <td><?= $row['diagnosis'] ?></td>
             <td><?= $row['prescription'] ?></td>
             <td>
-                <a href="doctorpatientEdit.php?edit_id=<?= $row['card_id'] ?>">Edit</a>
+                <!-- <a href="doctorpatientEdit.php?edit_id=<?= $row['card_id'] ?>">Edit</a> -->
+                <a href="image.php?edit_id=<?= $row['card_id'] ?>" class=" newbtn">Edit</a>
             </td>
         </tr>
         <?php endwhile; ?>

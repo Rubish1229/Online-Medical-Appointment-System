@@ -2,8 +2,19 @@
 
 require 'Connection.php';
 
-$sql="SELECT * FROM sampledoctor";
-$result=$con->query($sql);
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
+$sql = "SELECT sampledoctor.*, department.dept_name
+        FROM sampledoctor
+        JOIN department ON sampledoctor.department_id = department.dept_id";
+
+$result = $con->query($sql);
+
+if (!$result) {
+    die("Query failed: " . $con->error);
+}
 
 ?>
 
@@ -16,81 +27,44 @@ $result=$con->query($sql);
      <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="hospital.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="./css/utility.css">
 </head>
 
 <style>
-    .table-responsive {
-  width: 98%;   
-  max-height: 500px;        /* full width container */
-  overflow-x: auto;      
-  overflow-y: auto;      
-       
-  -webkit-overflow-scrolling: touch;  /* smooth scrolling on mobile */
-  margin: auto;          /* center it if smaller */
+    .booking-table {
+    max-width: 1140px; /* or 50vw */
+    overflow-x: auto;
+    margin: auto;
+    margin-top: 50px; /* better to use auto for horizontal scroll */
 }
-     .tb{
-        width: 68%;
-         border-collapse: collapse; 
-         margin:auto; 
-        
-     
-         -webkit-overflow-scrolling: touch; 
-    }
-    
-    
-    .tb th, .tb td {
-        padding: 15px;            /* increase padding inside cells */
-        border: 1px solid #000;   /* single clean border */
-        text-align: left;
-    }
-    .tb th {
-        background: #0D6DFD; 
-        color: white;     /* optional: header background */
-    } 
-
-    .table-responsive::-webkit-scrollbar {
-  height: 10px;   
-  width: 10px;            /* scrollbar height (horizontal) or width (vertical) */
-  background-color: #b8d4ffff;  /* track background */
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-  background-color: #0D6DFD;     /* scrollbar thumb color */
-  border-radius: 10px;        /* rounded corners */
-}
-
-.table-responsive::-webkit-scrollbar-thumb:hover {
-  background-color: #555;     /* darker on hover */
+h3{
+    margin-top: 70px;
+    text-align: center;
 }
 </style>
 <body>
     
 <?php include'navbar.php'  ?>
 
-    
-    <div class="mainDiv">
-        <div class="adminLeft hospitalleft">
+   <div class="patientBookingList">
+
+<div class="patientBookingListLeft">
             <ul>
-                <li> <a href="">Booking lists</a></li>
-                <li> <a href="hdepartment.php">Patient Signup list</a></li>
-                <li> <a href="hdoctorlist.php">Doctor Signup list</a></li>
-                <li> <a href="hospitalpatientlist.php">Patients</a></li>
-               
-            </ul>
+            <li><a href="hpatientbooklist.php">Booking list</a></li>
+        <li><a href="hospitalpatientlist.php" >Patient signup list</a></li>
+        <li><a href="hdoctorlist.php"style="color:orange;">Doctor signup list</a></li>
+        <li><a href="hdepartment.php">Department list</a></li>
+        </ul>
 </div>
-        <div class="adminRight">
-        <br>
+         <div class="patientBookingListRight">
         <form action="GET">
         <?php
         echo "<h3>Doctors signup lists</h3>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+      
         ?>
 
-        <div class="table-responsive">
-
-         <table border="1" cellpadding="6" class="tb">
+         <div class="booking-table">
+    <table style="border-collapse: collapse;">
         <tr>
             <th>DoctorID</th>
             <th>DoctorName</th>
@@ -106,30 +80,29 @@ $result=$con->query($sql);
             <th>Actions</th>
         </tr>
         <?php
-        if($result->num_rows>0)
-        {
-            while($row=$result->fetch_assoc()){
-                echo "<tr>";
-                echo "<td>".$row['d_id']."</td>";
-                echo "<td>".$row['d_name']."</td>";
-                echo "<td>".$row['d_email']."</td>";
-                echo "<td>".$row['d_pwd']."</td>";
-                echo "<td>".$row['d_gender']."</td>";  
-                echo "<td>".$row['d_address']."</td>";  
-                echo "<td>".$row['d_contact']."</td>";
-                echo "<td>".$row['d_licensenum']."</td>";
-                echo "<td>".$row['d_signupdatetime']."</td>";  
-                echo "<td>".$row['department_id']."</td>";
-                echo "<td>".$row['department_name']."</td>";
-                
-
-                echo"<td>
-                    <a href='hdoctorupdate.php?d_id=".$row['d_id']."' class='update'>UPDATE</a> | 
-                    <a href='deldoctor.php?d_id=".$row['d_id']."' class='delete'>DELETE</a>  
-                </td>";
-                echo "</tr>";
-            }
-        }
+       if($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>".htmlspecialchars($row['d_id'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_name'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_email'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_pwd'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_gender'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_address'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_contact'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_licensenum'])."</td>";
+        echo "<td>".htmlspecialchars($row['d_signupdatetime'])."</td>";
+        echo "<td>".htmlspecialchars($row['department_id'])."</td>";
+        echo "<td>".htmlspecialchars($row['dept_name'])."</td>";
+        echo "<td>
+                <div class='action-buttons'>
+                    <a href='hdoctorupdate.php?d_id=".urlencode($row['d_id'])."' class='update'>UPDATE</a> | 
+                    <a href='deldoctor.php?d_id=".urlencode($row['d_id'])."' class='delete' onclick=\"return confirm('Are you sure you want to delete this doctor?')\">DELETE</a>  
+                </div>
+              </td>";
+        echo "</tr>";
+    }
+}
 
         ?>
 

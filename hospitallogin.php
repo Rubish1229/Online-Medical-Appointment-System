@@ -43,13 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 <?php include 'navbar.php' ?>
     <div class="patientSignupBox">
-    <div class="category">
-                <div class="patientCategory cat"> <button style="background-color: #0D6DFD;"><a href="patientlogin.php" style="color: white; "> Patient</a></button></div>
-                <div class="doctorCategory cat"><button style="background-color: white;"><a href="samplelogin.php" style="color: black; "> Doctor</a></button></div>
-                <div class="hospitalCategory cat"><button><a href="hospitalsignup.php">Hospital</a></button></div>
-            </div>
+    
 
-    <div class="box" style="margin-top: 50px;">
+    <div class="box" style="margin-top: 100px;">
         <div class="leftdiv">
             
                 

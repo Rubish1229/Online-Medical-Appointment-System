@@ -8,8 +8,9 @@
     border: 2px solid #0D6DFD;
     /* background-color: #0D6DFD; */
     margin: 10vh auto;
-    height: 500px;
+    border-radius: 5px;
     width: 60%;
+    height: 150vh;
     /* display: flex; */
     /* justify-content: center; */
 
@@ -22,14 +23,15 @@
     border: 2px solid #0D6DFD;
     padding: 20px;
     margin: 10px 10px;
-    height: 300px;
+    height: 125vh;
 }
 
 .signupBox{
     gap: 20px;
 }
 
-.signupBox1,.signupBox2,.signupBox3,.signupBox4{
+.signupBox1{
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,14 +46,223 @@
     
 }
 
-.sampleSignupbtn{
-    background-color: #0D6DFD;
-    color: white;
-    height: 40px;
-    width: 80px;
-    margin: 50px 350px;
+
+
+
+  
+.navbar{
+    height: 8.2vh;
+    width: 100%;
+    border-bottom: 1px  solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+     box-shadow: 0px 5px 15px gray;
+     
+     
+     
+
+    
+    
+}
+nav{
+    position: fixed;
+     z-index: 10;
+     top: 0;
+     margin: 0;
+       height: 8.3vh;
+  width: 100%;
+  background-color: white;
+  
+    
+    }
+
+
+.logo img{
+    height: 57px;
+    width: 68px;
+    margin-top: 2px;
+    margin-left: 5px;
     cursor: pointer;
 }
 
 
+.nav-list ul{
+    list-style: none;
+    display: flex;
+    /* gap: -30px; */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    
+   
+    
+}
+i{
+    font-size: 13px;
+    margin-bottom: 7px;
+        color: #0D6DFD;
 
+}
+
+.nav-list ul li a{
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+   
+    
+}
+.nav-list ul li :hover{
+    color: #0D6DFD;
+    transition: all 1s ease;
+ 
+    /* font-weight: bold; */
+    
+   
+    
+}
+
+.i-login{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    margin-top: 15px;
+      
+}
+.i-signup{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 2px solid #0D6DFD;
+    margin-right: 35px;
+    margin-top: 0px;
+    padding-top: 8px;
+    padding-left: 7px;
+    height: 35px;
+    width: 100px;
+
+      
+
+}
+
+
+.signup{
+    background-color: white;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+    
+}
+.signup:hover{
+   background-color: #e8edf4;
+   color: white;
+   border-radius: 12px;
+}.login:hover{
+  background-color: rgb(255, 218, 218);
+   color: white;
+   border-radius: 10px;
+}
+.p-login {
+margin-top: 10px;
+
+
+}
+.p-signup {
+margin-top: -5px;
+padding: 2px ;
+font-size: 15px;
+color: #0D6DFD;
+font-weight: bold;
+}
+
+.form {
+    border: 2px solid #0D6DFD;
+    padding: 30px;
+    margin: 30px auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Form itself */
+.form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input group */
+.signupBox1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Labels */
+.signupBox1 label {
+    font-weight: 500;
+}
+
+/* Inputs, select */
+.signupBox1 input,
+.signupBox1 select {
+    height: 38px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Radio buttons */
+.signupBox1 input[type="radio"] {
+    height: auto;
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Signup button */
+.sampleSignupbtn{
+    align-self: center;
+    background-color: #0D6DFD;
+    color: white;
+    height: 100px;
+    /* width: 100px; */
+    padding: 18px 26px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    
+}
+
+.sampleSignupbtn:hover {
+    background-color: #084fc7;
+}
+
+
+
+.gender-group {
+    display: flex;
+    gap: 30px;
+    justify-content: center;   /* center horizontally */
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.gender-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.gender-group input[type="radio"] {
+    accent-color: #0D6DFD; /* modern blue radio */
+    cursor: pointer;
+}

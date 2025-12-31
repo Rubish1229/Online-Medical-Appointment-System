@@ -27,6 +27,9 @@ $sql = "SELECT
         WHERE medicalcard.patient_id = $patient_id";
 $result=$con->query($sql);
 
+
+
+
 ?>
 
 
@@ -55,14 +58,13 @@ $result=$con->query($sql);
 
     
     <div class="mainDiv">
-        <div class="adminLeft pbookleft">
-            <ul>
-                <li> <a href="pbook.php">Appoinments</a></li>
-                <li> <a href="phistory.php" style="color:orange">Medical history</a></li>
-                
-               
-            </ul>
-</div>
+       <div class="adminLeft pbookleft">
+        <ul>
+            <li><a href="#" >Book appointment</a></li>
+            <!-- <li><a href="#">Appointment queue</a></li> -->
+            <li><a href="phistory.php" style="color: orange;">History</a></li>
+        </ul>
+    </div>
         <div class="adminRight">
 
         <form action="GET">

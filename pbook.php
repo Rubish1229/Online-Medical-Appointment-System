@@ -95,6 +95,7 @@ if (isset($_POST['book_appointment'])) {
 <link rel="stylesheet" href="hospital.css">
 <link rel="stylesheet" href="pbook.css">
 <link rel="stylesheet" href="./part/login.css">
+<link rel="stylesheet" href="./css/utility.css">
 </head>
 <body>
 
@@ -104,9 +105,9 @@ if (isset($_POST['book_appointment'])) {
 <div class="mainDiv">
     <div class="adminLeft pbookleft">
         <ul>
-            <li><a href="#" style="color: orange;">Book appointments</a></li>
+            <li><a href="pbook.php" style="color: orange;">Book appointment</a></li>
             <!-- <li><a href="#">Appointment queue</a></li> -->
-            <li><a href="phistory.php">History</a></li>
+            <li><a href="imageDisplay.php">History</a></li>
         </ul>
     </div>
 
@@ -114,20 +115,24 @@ if (isset($_POST['book_appointment'])) {
         <div class="pbookform">
             <div class="pbookformdiv2">
                 <h4>Your Details:</h4>
-                <div class="patientDetail">
-                    <label>Full Name : <?php echo $row['p_name']; ?></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <label>Patient ID : <?php echo $row['p_id']; ?></label><br><br>
-                    <label>Gender : <?php echo $row['p_gender']; ?></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <div class="detailsbox">
+                    <div class="leftside">
+                    <label>Full Name : <?php echo $row['p_name']; ?></label>
+                    <label>Gender : <?php echo $row['p_gender']; ?></label>
+                    <label>Contact : <?php echo $row['p_contact']; ?></label>
+                    </div>
+                    <div class="rightside">
                     <label>Age : <?php echo $row['p_age']; ?></label><br><br>
-                    <label>Contact : <?php echo $row['p_contact']; ?></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <label>Patient ID : <?php echo $row['p_id']; ?></label><br><br>
                     <label>Address : <?php echo $row['p_address']; ?></label><br><br>
+                </div>
                 </div>
 
                 <!-- Step 1: Select Department -->
                 <form method="POST" action="pbook.php">
                     <label>Select Department:</label>
                     <select name="dept_id" required>
-                        <option value="">Select Department</option>
+                        <option value="" hidden>Select Department</option>
                         <?php
                         if ($resultDept->num_rows > 0) {
                             while ($dept = $resultDept->fetch_assoc()) {
@@ -137,7 +142,7 @@ if (isset($_POST['book_appointment'])) {
                         }
                         ?>
                     </select>
-                    <button type="submit" name="show_doctors">Confirm</button>
+                    <button type="submit" name="show_doctors" class="btn">Confirm</button>
                 </form>
 
                 <br>
@@ -164,7 +169,7 @@ if (isset($_POST['book_appointment'])) {
                         <label>Appointment Time:</label>
                         <input type="time" name="appointment_time" required>
                         <br><br>
-                        <button type="submit" name="book_appointment">Book Appointment</button>
+                        <button type="submit" name="book_appointment" class="btn2">Book Appointment</button>
                     </form>
                 <?php endif; ?>
 

@@ -55,37 +55,37 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="form">
         <form action="" method="POST">
 
-        <div class="patientSignupBox1">
-            <label>Patient name</label>
+        <!-- <div class="patientSignupBox1"> -->
+            <label class="labelClass">Patient name</label>
             <input type="text" name="pname" placeholder="Patient full name"><br>
 
-            <label>Patient email</label>
+            <label class="labelClass">Patient email</label>
             <input type="text" name="pemail" placeholder="Patient email"><br>
-</div>
+<!-- </div> -->
 
-            <div class="patientSignupBox2">
-            <label>Patient password</label>
+            <!-- <div class="patientSignupBox2"> -->
+            <label class="labelClass">Patient password</label>
             <input type="text" name="ppwd" placeholder="Patient password"><br>
 
             <label>Patient contact</label>
             <input type="text" name="pcontact" placeholder="Patient contact"><br>
-</div>
+<!-- </div> -->
 
-            <div class="patientSignupBox3">
+            <!-- <div class="patientSignupBox3"> -->
             <label>Patient address</label>
             <input type="text" name="paddress" placeholder="Patient address"><br>
 
              <label>Patient address</label>
             <input type="text" name="page" placeholder="Patient age"><br>
 
-</div>
+<!-- </div> -->
 
-           <div class="patientSignupBox4">
+           <!-- <div class="patientSignupBox4"> -->
               <label>Patient gender</label>
-            <input type="radio" name="pgender" value="Male">Male<br>
-            <input type="radio" name="pgender" value="Female">Female<br>
+            <input type="radio" name="pgender" value="Male" class="radio-group">Male<br>
+            <input type="radio" name="pgender" value="Female" class="radio-group">Female<br>
 
-</div>
+<!-- </div> -->
            
 
             <button type="submit" class="sampleSignupbtn">Signup</button>

@@ -54,24 +54,31 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <title>Update Patient</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="hospital.css">
+    <link rel="stylesheet" href="./css/utility.css">
 </head>
+
+<style>
+    .patientBookingListRight{
+        margin-top: 80px;
+    }
+</style>
 <body>
 
-<nav>
-    <img src="images/SWASTHYA.png" alt="logo">
-</nav>
+<?php  include 'navbar.php';  ?>    
 
-<div class="mainDiv">
-    <div class="adminLeft hospitalleft">
-        <ul>
-            <li><a href="">Appointments</a></li>
-            <li><a href="">Departments</a></li>
-            <li><a href="">Doctors</a></li>
-            <li><a href="">Patients</a></li>
+   
+<div class="patientBookingList">
+
+<div class="patientBookingListLeft">
+            <ul>
+            <li><a href="hpatientbooklist.php">Booking list</a></li>
+        <li><a href="hospitalpatientlist.php"style="color:orange;" >Patient signup list</a></li>
+        <li><a href="hdoctorlist.php">Doctor signup list</a></li>
+        <li><a href="hdepartment.php">Department list</a></li>
         </ul>
-    </div>
+</div>
 
-    <div class="adminRight">
+     <div class="patientBookingListRight">
         <h2>Update Patient Information</h2>
 
         <form action="" method="POST" class="formStyle">
@@ -99,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </select>
             <br><br>
 
-            <button type="submit" class="updateBtn">Update Patient</button>
+            <button type="submit" class="updateBtn btn2">Update Patient</button>
         </form>
 
     </div>

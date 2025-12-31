@@ -1,0 +1,227 @@
+.btn{
+    height: 40px;
+    width: 90px;
+    border: 5px;
+    border-radius: 5px;
+    background-color: #0D6DFD;
+    color: white;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #0c60dd;
+}
+
+.btn2{
+    height: 40px;
+    width: 140px;
+    border: 5px;
+    border-radius: 5px;
+    background-color: #0D6DFD;
+    color: white;
+    cursor: pointer;
+}
+.btn2:hover{
+    background-color: #0c60dd;
+}
+/* 
+for small table */
+
+
+/* for long table */
+.appointmentTable {
+    width: 95%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    
+}
+
+/* Table Header */
+.appointmentTable  th {
+    background-color: #0D6DFD;
+    color: #ffffff;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Table Body */
+.appointmentTable tbody td {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    text-align: center;
+    color: #333333;
+}
+
+/* Alternate Row Coloring */
+.appointmentTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover Effect */
+.appointmentTable tbody tr:hover {
+    background-color: #eef4ff;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.patientBookingList {
+    display: flex;
+    margin-right: 20px;
+    gap: 10px;
+}
+
+/* Left Sidebar */
+.patientBookingListLeft {
+    background-color: #0D6DFD;
+    width: 290px;
+    min-height: 100vh;
+    padding: 20px 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.patientBookingListLeft ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 100px;
+}
+
+.patientBookingListLeft ul li {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.patientBookingListLeft ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.patientBookingListLeft ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Right Content Area */
+.patientBookingListRight {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+   .booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Table Header */
+.booking-table th {
+    background-color: #0D6DFD;
+    color: #ffffff;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Table Data */
+.booking-table td {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Alternate Row Color */
+.booking-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover Effect */
+.booking-table tr:hover {
+    background-color: #eef4ff;
+}
+
+/* Action Links */
+.booking-table a {
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.booking-table a:first-child {
+    background-color: #0D6DFD;
+    color: #ffffff;
+    margin-right: 6px;
+}
+
+.booking-table a:last-child {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.booking-table a:hover {
+    opacity: 0.85;
+}
+
+/* 
+//for button */
+
+
+/* Action Button Container */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Common Button Style */
+.action-buttons a {
+    min-width: 60px;
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+/* Edit Button */
+.btn-edit {
+    background-color: #0D6DFD;
+    color: #ffffff;
+}
+
+.btn-edit:hover {
+    background-color: #084ecf;
+}
+
+/* Delete Button */
+.btn-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background-color: #b52a37;
+}

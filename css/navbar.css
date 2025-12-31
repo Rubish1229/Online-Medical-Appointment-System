@@ -64,7 +64,7 @@ nav{
     display: flex;
     /* gap: -30px; */
     margin: 0;
-    padding: 0;
+    padding-top: 0px;
     display: flex;
     align-items: center;
     
@@ -94,6 +94,8 @@ i{
 }
 .nav-list a{
     text-decoration: none;
+    padding-bottom: 5px;
+    /* color: black; */
 }
 
 
@@ -109,7 +111,7 @@ i{
     height: 35px;
     width: 100px;
     border-radius: 4px;;
-    
+    color: black;
     transition: all 0.7s ease
 }
 
@@ -129,4 +131,11 @@ i{
 .i-signuplogin:hover i,
 .i-signuplogin:hover .p-signup {
     color: white;
+}
+
+.i-signuplogin i{
+    padding-top: 5px;
+}
+.i-signuplogin p{
+    padding-bottom: 3px;
 }

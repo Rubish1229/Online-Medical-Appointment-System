@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Update failed: " . $con->error;
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <label>Prescription:</label><br>
     <textarea name="prescription" rows="6" cols="57"><?= $row['prescription'] ?></textarea><br><br>
+
+
+      
 
     <button type="submit" class="doctorEditbtn">Update</button>
 </form>
