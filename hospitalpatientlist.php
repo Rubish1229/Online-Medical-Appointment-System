@@ -88,7 +88,7 @@ h3{
                   echo "<td>
         <div class='action-buttons'>
             <a href='hpatientupdate.php?p_id=".$row['p_id']."' class='update'>UPDATE</a> | 
-            <a href='delpatientid.php?delete_id=".$row['p_id']."' class='delete'>DELETE</a>
+            <a href='delpatient.php?delete_id=".$row['p_id']."' class='delete'>DELETE</a>
         </div>
       </td>";
 echo "</tr>";

@@ -75,7 +75,7 @@ if ($result->num_rows > 0) {
 <br>
 <br>
 
-<h3>Doctor's Appointment List</h3>
+<h3>Patient's Appointment List</h3>
 
 <div class="appointmentTable">
 <?php if($result->num_rows > 0): ?>
