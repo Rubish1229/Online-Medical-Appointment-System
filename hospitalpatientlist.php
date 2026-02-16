@@ -23,10 +23,23 @@ $result=$con->query($sql);
 </head>
 
 <style>
-h3{
+/* h3{
     margin-top: 40px;
     text-align: center;
     font-size: 20px;
+} */
+.booking-table {
+    max-width: 1140px; /* or 50vw */
+    overflow-x: auto;
+    margin: auto;
+    margin-top: 30px; /* better to use auto for horizontal scroll */
+}
+.booking-table th {
+    background-color: #0D6DFD;
+    color: #ffffff;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
 }
     
 </style>
@@ -50,12 +63,10 @@ h3{
 
 
      <div class="patientBookingListRight">
+         <h3  style="text-align: center; margin-top:80px; font-size:25px;">Patient's Signup List</h3>
           
         <form action="GET">
-        <?php
-        echo "<h3>Patients signup lists</h3>";
-      
-        ?>
+     
         <div class="booking-table">
     <table style="border-collapse: collapse;">
         <tr>

@@ -61,7 +61,7 @@ if (isset($_GET['delete_id'])) {
 /* Left Sidebar */
 .patientBookingListLeft {
     background-color: #0D6DFD;
-    width: 290px;
+    flex: 0 0 300px;
     min-height: 100vh;
     padding: 20px 10px;
     border-radius: 8px;
@@ -104,7 +104,7 @@ if (isset($_GET['delete_id'])) {
    .booking-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 65px;
+    margin-top: 30px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -112,7 +112,7 @@ if (isset($_GET['delete_id'])) {
 .booking-table th {
     background-color: #0D6DFD;
     color: #ffffff;
-    padding: 12px;
+    padding: 22px;
     text-align: center;
     font-size: 14px;
 }
@@ -222,7 +222,7 @@ if (isset($_GET['delete_id'])) {
 
 
   <div class="patientBookingListRight">
-<h3  style="text-align: center; margin:10px;">Hospital patient booking list</h3>
+<h3  style="text-align: center; margin-top:80px; font-size:25px;">Patient's Booking List</h3>
 
 <?php if($result->num_rows>0):?>
     

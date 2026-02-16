@@ -57,7 +57,7 @@ $result = $con->query($sql);
     }
     .addDepartment input{
         height: 40px;
-        width: 180px;
+        mn-width: 180px;
         border-radius: 5px;
         margin-top: 10px;
         border: 2px solid #0D6DFD;
@@ -70,7 +70,10 @@ $result = $con->query($sql);
         display: flex;
         align-items: center;
         justify-content: center;
+       
     }
+
+   
 </style>
 <body>
 
@@ -82,7 +85,7 @@ $result = $con->query($sql);
 
 <div class="patientBookingListLeft">
         <ul>
-            <li><a href="hpatientbooklist.php" ">Booking list</a></li>
+            <li><a href="hpatientbooklist.php">Booking list</a></li>
         <li><a href="hospitalpatientlist.php">Patient signup list</a></li>
         <li><a href="hdoctorlist.php">Doctor signup list</a></li>
         <li><a href="hdepartment.php"style="color:orange;" >Department list</a></li>
@@ -108,7 +111,7 @@ $result = $con->query($sql);
 
             <form action="" method="GET">
             <div class="booking-table">
-    <table style="border-collapse: collapse;">
+    <table style="border-collapse:collapse;">
                     <tr>
                         <th>DepartmentID</th>
                         <th>DepartmaentName</th>
@@ -134,6 +137,7 @@ $result = $con->query($sql);
                     ?>
 
                 </table>
+</div>
             </form>
 
 
