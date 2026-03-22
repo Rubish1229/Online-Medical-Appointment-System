@@ -1,5 +1,10 @@
 <?php
+
+require 'auth3.php';
+
 require 'Connection.php';
+
+$h_id = $_SESSION['h_id'];
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addDept'])) {
     $dept = $_POST['newDepartment'];
@@ -9,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addDept'])) {
     $stmt->bind_param("s", $dept);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Department added successfully!');</script>";
+        // echo "<script>alert('Department added successfully!');</script>";
     } else {
-        echo "<script>alert('Error adding department');</script>";
+        // echo "<script>alert('Error adding department');</script>";
     }
 }
 
@@ -50,17 +55,20 @@ $result = $con->query($sql);
         height: 180px;
         border-radius: 5px;
         
+        
     }
     .addDepartment button{
         margin-left: 40px;
-        margin-top: 30px;
+        margin-top: 15px;
+        margin-left: 70px;
     }
     .addDepartment input{
         height: 40px;
-        mn-width: 180px;
+        min-width: 220px;
         border-radius: 5px;
         margin-top: 10px;
         border: 2px solid #0D6DFD;
+        padding: 0px 10px;
     }
     h4{
         text-align: center;
@@ -74,11 +82,16 @@ $result = $con->query($sql);
     }
 
    
+   .h2{
+    margin-left: 18px;
+    font-weight: 500;
+    padding-top: 20px;
+   }
 </style>
 <body>
 
     <?php
-    include 'navbar.php';
+    include 'navbar2.php';
     ?>
 
 <div class="patientBookingList">
@@ -94,24 +107,24 @@ $result = $con->query($sql);
 
         
   <div class="patientBookingListRight">
-<h3 style="text-align: center; margin:10px;">Department</h3>
+<h2 style="text-align: center; margin:10px;">Department</h2>
             <div class="addDepartment">
                 <div class="h2">Add a new department</div>
-
+          
 
                 <form action="" method="POST">
-                    <input type="text" name="newDepartment" placeholder="add department" required>
+                    <input type="text" name="newDepartment" placeholder="Add department" required>
                     <button type="submit" name="addDept" class="btn">ADD</button>
                 </form>
             </div>
 
             <br>
             <br>
-            <h4>List of department</h4>
+            <h4><u>List of department</u>   </h4>
 
             <form action="" method="GET">
             <div class="booking-table">
-    <table style="border-collapse:collapse;">
+    <table style="border-collapse:collapse; width:800px;">
                     <tr>
                         <th>DepartmentID</th>
                         <th>DepartmaentName</th>
@@ -144,6 +157,7 @@ $result = $con->query($sql);
         </div>
     </div>
 
+    <script src="reload.js"></script>
 </body>
 
 </html>

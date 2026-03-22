@@ -1,10 +1,12 @@
 <?php
-
+require 'auth3.php';
 require 'Connection.php';
 
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
+
+$h_id = $_SESSION['h_id'];
 
 $sql = "SELECT sampledoctor.*, department.dept_name
         FROM sampledoctor
@@ -40,11 +42,15 @@ if (!$result) {
 h3{
     margin-top: 70px;
     text-align: center;
+    font-size: 25px;
+}
+table tr td{
+    font-size: 20px;
 }
 </style>
 <body>
     
-<?php include'navbar.php'  ?>
+<?php include'navbar2.php'  ?>
 
    <div class="patientBookingList">
 
@@ -59,7 +65,7 @@ h3{
          <div class="patientBookingListRight">
         <form action="GET">
         <?php
-        echo "<h3>Doctors signup lists</h3>";
+        echo "<h3>Doctor's signup lists</h3>";
       
         ?>
 
@@ -114,6 +120,6 @@ h3{
         </div>
     </div>
     
-
+ <script src="reload.js"></script>
 </body>
 </html>

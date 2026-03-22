@@ -55,14 +55,26 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   
 </head>
 <style>
-  
+  .mainBox{
+    background: linear-gradient(to top, #95bcf6, #0D6DFD);
+    width: 1100px;
+  }
+    .form{
+        background-color: white;
+    }
+    h2{
+        color:white;
+    }
+    .category button{
+        border:2px solid white;
+    }
 
-
+    
 </style>
 
 <body>
-    <?php include 'navbar.php' ?>
-    <div class="signupBox">
+    <?php include 'navbar1.php' ?>
+    <div class="signupBox mainBox">
     <h2>Doctor's signup form</h2>
 <div class="category">
                 <div class="patientCategory cat"> <button><a href="patientsignup.php" > Patient</a></button></div>
@@ -99,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <!-- <div class="signupBox2"> -->
             <label>Doctor contact</label>
-            <input type="phone" name="dcontact" placeholder="Doctor contact"><br>
+            <input type="tel" name="dcontact" placeholder="Doctor contact" pattern="9[0-9]{9}" required><br>
 
             <label>Doctor address</label>
             <input type="text" name="daddress" placeholder="Doctor address"><br>

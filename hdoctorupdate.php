@@ -1,10 +1,14 @@
 <?php
+
+require 'auth3.php';
 require 'Connection.php';
 
 
 if (!isset($_GET['d_id']) || empty($_GET['d_id'])) {
     die("Error: Patient ID missing in URL.");
 }
+
+$h_id = $_SESSION['h_id'];
 
 $id = $_GET['d_id'];
 
@@ -60,13 +64,104 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 <style>
     .patientBookingListRight{
-        margin-top: 80px;
+        margin-top: 100px;
+        display: flex;
+        
     }
+
+    /* Right Section Styling */
+/* .patientBookingListRight {
+    width: 70%;
+    padding: 20px;
+    background-color: white;
+    
+    align-items: flex-start; 
+} */
+
+/* Form Container */
+.formStyle {
+    width: 800px;
+    background-color: #eeebeb;
+    padding: 30px;
+    padding-left: 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-left: 140px;
+}
+
+/* Form Heading */
+.patientBookingListRight h2 {
+    margin-bottom: 0px;
+    color: #333;
+    font-size: 22px;
+    margin-top: 0px;
+    text-align: center;
+
+
+
+}
+
+/* Labels */
+.formStyle label {
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+}
+
+/* Input Fields */
+.formStyle input,
+.formStyle select {
+    width: 500px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+    padding-left: 30px;
+    
+}
+.formStyle input, .formStyle label, .formStyle select{
+    margin-left: 70px;
+}
+/* Input Focus Effect */
+.formStyle input:focus,
+.formStyle select:focus {
+    border-color: #ff7a00;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 122, 0, 0.3);
+}
+
+/* Update Button */
+.updateBtn {
+    width: 250px;
+    padding: 12px;
+    background-color: #0D6DFD;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 180px;
+}
+
+/* Button Hover */
+.updateBtn:hover {
+    background-color: #0758d2;
+
+}
+
+
+
 </style>
 <body>
 
 
-<?php  include 'navbar.php';  ?>    
+<?php  include 'navbar2.php';  ?>    
 
    
 <div class="patientBookingList">
@@ -74,18 +169,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <div class="patientBookingListLeft">
             <ul>
             <li><a href="hpatientbooklist.php">Booking list</a></li>
-        <li><a href="hospitalpatientlist.php"style="color:orange;" >Patient signup list</a></li>
-        <li><a href="hdoctorlist.php">Doctor signup list</a></li>
+        <li><a href="hospitalpatientlist.php">Patient signup list</a></li>
+        <li><a href="hdoctorlist.php" style="color:orange;">Doctor signup list</a></li>
         <li><a href="hdepartment.php">Department list</a></li>
         </ul>
 </div>
 
+ 
+  <div class="patientBookingListRight" style="margin-left: 50px;">
+       
 
-  <div class="patientBookingListRight">
-        <h2>Update Doctor Information</h2>
-
-        <form action="" method="POST" class="formStyle">
-
+        <form action="" method="POST" class="formStyle"  >
+<h2>Update Doctor Information</h2>
             <label>Name:</label><br>
             <input type="text" name="d_name" value="<?php echo $doctor['d_name']; ?>"><br><br>
 
@@ -105,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input type="text" name="d_address" value="<?php echo $doctor['d_address']; ?>"><br><br>
 
             <label>Gender:</label><br>
-            <select name="d_gender">
+            <select name="d_gender" style="border:2px solid #0D6DFD">
                 <option value="Male" <?php if ($doctor['d_gender'] == "Male") echo "selected"; ?>>Male</option>
                 <option value="Female" <?php if ($doctor['d_gender'] == "Female") echo "selected"; ?>>Female</option>
                 <option value="Other" <?php if ($doctor['d_gender'] == "Other") echo "selected"; ?>>Other</option>
@@ -116,7 +211,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </form>
 
     </div>
+    
 </div>
 
+<script src="reload.js"></script>
 </body>
 </html>

@@ -2,6 +2,20 @@
 
 
 <?php
+session_start();
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+
+if (isset($_SESSION['h_id'])) {
+    $_SESSION = [];
+    session_destroy();
+}
+
+
 require 'Connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -15,7 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
-        echo "Login successful!";
+        session_regenerate_id(true);
+       $row = $result->fetch_assoc();
+    $_SESSION['h_id'] = $row['h_id'];
         header("Location: hpatientbooklist.php"); 
     } else {
         echo "Invalid email or password!";
@@ -41,17 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 </style>
 <body>
-<?php include 'navbar.php' ?>
+<?php include 'navbar1.php' ?>
     <div class="patientSignupBox">
     
 
-    <div class="box" style="margin-top: 100px;">
+    <div class="box" style="margin-top: 110px;">
         <div class="leftdiv">
             
                 
          
             <div class="leftdiv2 ">
-                <img src="./images/hospitalImg.png" alt="doctorimg" class="img1" style="margin-top:125px; margin-left:-30px;">
+                <img src="./images/hospitalImg.png" alt="doctorimg" class="img1" style="margin-top:140px; margin-left:-30px;">
                 
             </div>
             
@@ -59,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
            </div>
         <div class="rightdiv">
 
-            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">Login Page</h1>
+            <h1 style="font-size:24px;">Hospital's Login Page</h1>
             <div class="category">
                         <div class="patientCategory cat"><a href="patientlogin.php"> <button>Patient</button></a></div>
                         <div class="doctorCategory cat" ><a href="patientlogin.php"> <button style="background-color:white; color:black;">Doctor</button></a></div>
@@ -67,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </div>
             
             <div class="doctorAvatar">
-                <i class="fa-solid fa-user-doctor"></i>
+                <i class="fa-solid fa-hospital"></i>
             </div>
             
 
@@ -90,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <input type="text" name="hpwd" placeholder="Enter password">
                         </div>
                     </div>
-                    <button class="doctorLogin" id="doctorLogin">Login</button>
+                    <button class="doctorLogin" id="doctorLogin" style="margin-left:195px; margin-top:60px;">Login</button>
                 </form>
             </div>
         </div>

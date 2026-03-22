@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require 'auth1.php';
+
 require 'Connection.php';
 
 if (!isset($_SESSION['doctor_id'])) {
@@ -51,10 +54,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="./css/utility.css">
 </head>
 <style>
-    h3{
-        text-align: center;
-        margin: 20px 0px;
-    }
+   
     td a{
         text-decoration: none;
         
@@ -67,15 +67,18 @@ if ($result->num_rows > 0) {
         padding: 5px 10px;
         border-radius: 5px;
     }
+    h2{
+    text-align: center;
+      text-shadow: 2px 2px 5px rgba(13, 109, 253, 0.3); 
+      color: #0D6DFD;
+      margin-top: 100px;
+}
 </style>
 <body>
-<?php include 'navbar.php' ?>
-<br>
-<br>
-<br>
-<br>
+<?php include 'navbar2.php' ?>
 
-<h3>Patient's Appointment List</h3>
+
+<h2>Patient's Appointment List</h2>
 
 <div class="appointmentTable">
 <?php if($result->num_rows > 0): ?>
@@ -121,6 +124,10 @@ if ($result->num_rows > 0) {
 <?php endif; ?>
 
 </div>
+
+<script src="reload.js">
+</script>
+
 
 </body>
 </html>

@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+
+if (isset($_SESSION['doctor_id'])) {
+    $_SESSION = [];
+    session_destroy();
+}
+
 require 'Connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -174,7 +186,7 @@ font-weight: bold;
 
 </style>
 <body>
-<?php include 'navbar.php' ?>
+<?php include 'navbar1.php' ?>
 
     <div class="box">
         <div class="leftdiv">
@@ -190,7 +202,7 @@ font-weight: bold;
         </div>
         <div class="rightdiv">
 
-            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">Doctor's Login Page</h1>
+            <h1 style="font-size:24px;">Doctor's Login Page</h1>
             <div class="category">
                 <div class="patientCategory cat"> <a href="patientlogin.php"><button>Patient</button></a> </div>
                 <div class="doctorCategory cat"><a href="samplelogin.php"><button>Doctor</button></a> </div>
@@ -221,7 +233,7 @@ font-weight: bold;
                                 <input type="password" name="dpwd" placeholder="Enter password">
                             </div>
                         </div>
-                        <button class="doctorLogin" id="doctorLogin">Login</button>
+                        <button class="doctorLogin" id="doctorLogin" style="margin-left:195px; margin-top:60px;">Login</button>
                 </form>
             </div>
         </div>

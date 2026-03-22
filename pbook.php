@@ -1,12 +1,13 @@
 <?php
 session_start();
+
+require 'auth.php';
+
+
 require 'Connection.php';
 
-// Check if patient is logged in
-if (!isset($_SESSION['p_id'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
-    exit();
-}
+
+
 
 $p_id = $_SESSION['p_id'];
 
@@ -54,6 +55,31 @@ if (isset($_POST['book_appointment'])) {
     $stmtDept->execute();
     $dept_name = $stmtDept->get_result()->fetch_assoc()['dept_name'];
 
+
+    $checkSql = "SELECT * FROM medicalcard 
+             WHERE doctor_id = ? 
+             AND departmentName = ?
+             AND appointment_date = ?
+             AND appointment_time = ?";
+
+$stmtCheck = $con->prepare($checkSql);
+$stmtCheck->bind_param("isss", 
+    $doctor_id,
+    $dept_name,
+    $appointment_date,
+    $appointment_time
+);
+
+$stmtCheck->execute();
+$resultCheck = $stmtCheck->get_result();
+
+if ($resultCheck->num_rows > 0) {
+
+    
+    $error_msg = "This time slot is already booked. Please choose another time.";
+
+} else {
+
     // Insert into medicalcard
     $sqlInsert = "INSERT INTO medicalcard 
         (patient_id, patientName, patientGender, patientAge, patientContact, 
@@ -77,13 +103,37 @@ if (isset($_POST['book_appointment'])) {
     );
 
     if ($stmtInsert->execute()) {
-        $success_msg = "Appointment booked successfully!";
+        $success_msg = " <span class='notifynew'><h3><b>Appointment booked successfully !</b></h3></span>";
     } else {
         $error_msg = "Error inserting: " . $stmtInsert->error;
     }
 }
 
+if ($stmtInsert->execute()) {
+
+    // Insert into appointments table
+    $stmtApp = $con->prepare("INSERT INTO appointments 
+        (doctor_id, patient_id, app_date, app_time) 
+        VALUES (?, ?, ?, ?)");
+
+    $stmtApp->bind_param(
+        "iiss",
+        $doctor_id,
+        $row['p_id'],
+        $appointment_date,
+        $appointment_time
+    );
+
+    $stmtApp->execute();
+
+    $success_msg = "<span class='notifynew'><h3><b>Appointment booked successfully !</b></h3></span>";
+}
+
+
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,9 +147,82 @@ if (isset($_POST['book_appointment'])) {
 <link rel="stylesheet" href="./part/login.css">
 <link rel="stylesheet" href="./css/utility.css">
 </head>
-<body>
 
-<?php include 'navbar.php';?>
+<style>
+    .pbookform{
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+ .notify {
+    padding: 5px 25px;
+    margin: 20px auto;
+    width: fit-content;
+    border-radius: 8px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 10px 4px 10px #0D6DFD;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.notify.success {
+    background-color: #e6ffed;
+    border: 2px solid #28a745;
+}
+
+.notify.success h2 {
+    color: #198754;
+}
+
+.notify.error {
+    background-color: #ffe6e6;
+    border: 2px solid #dc3545;
+}
+
+.notify.error h2 {
+    color: #842029;
+}
+.rightside{
+    margin-left: 150px;
+}
+.btn{
+    margin-left: 70px;
+
+}
+.leftside{
+    margin-left: 100px;
+}
+h2{
+    text-align: center;
+      text-shadow: 2px 2px 5px rgba(13, 109, 253, 0.3); 
+      color: #0D6DFD;
+}
+
+.line{
+    margin-left: 5rem;
+
+}
+
+.form{
+    margin: 30px 100px;
+}
+
+label{
+    font-weight: 500;
+    margin-right: 5px;
+}
+.btn{
+    margin-left: 50px;
+}
+
+.btn2{
+    margin:40px 230px;
+}
+</style>
+<body>
+<?php
+include 'navbar2.php';
+?>
 
 
 <div class="mainDiv">
@@ -112,9 +235,9 @@ if (isset($_POST['book_appointment'])) {
     </div>
 
     <div class="adminRight" style="background-color: white;">
-        <div class="pbookform">
+        <div class="pbookform" style="box-shadow: 0px 15px 25px rgba(13, 109, 253, 0.6); height:35rem;">
             <div class="pbookformdiv2">
-                <h4>Your Details:</h4>
+                <h2>Appointment card</h2>
                 <div class="detailsbox">
                     <div class="leftside">
                     <label>Full Name : <?php echo $row['p_name']; ?></label>
@@ -128,7 +251,10 @@ if (isset($_POST['book_appointment'])) {
                 </div>
                 </div>
 
+                <div class="line" style="height: 5px; width:80%; background-color:#0D6DFD;"></div>
+
                 <!-- Step 1: Select Department -->
+                 <div class="form">
                 <form method="POST" action="pbook.php">
                     <label>Select Department:</label>
                     <select name="dept_id" required>
@@ -164,26 +290,46 @@ if (isset($_POST['book_appointment'])) {
 
                         <br><br>
                        <label>Appointment Date:</label>
-                        <input type="date" name="appointment_date" required>
+                       <input type="date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" required>
 
                         <label>Appointment Time:</label>
-                        <input type="time" name="appointment_time" required>
+                        <!-- <input type="time" name="appointment_time" step="600" required>  -->
+                        <select name="appointment_time" required>
+                        <?php
+                        $start = strtotime("09:00");
+                        $end = strtotime("20:00");
+
+                        while ($start <= $end) {
+                            $time = date("H:i", $start);
+                            echo "<option value='$time'>$time</option>";
+                            $start = strtotime("+10 minutes", $start);
+                        }
+                        ?>
+                        </select>
                         <br><br>
                         <button type="submit" name="book_appointment" class="btn2">Book Appointment</button>
                     </form>
+                 </div>
                 <?php endif; ?>
 
-                <?php
-                if (isset($success_msg)) {
-                    echo "<p style='color:green;'>$success_msg</p>";
-                } elseif (isset($error_msg)) {
-                    echo "<p style='color:red;'>$error_msg</p>";
-                }
-                ?>
+               <?php if(isset($success_msg)): ?>
+    <div class="notify success">
+        <h2><?php echo $success_msg; ?></h2>
+    </div>
+<?php endif; ?>
+
+<?php if(isset($error_msg)): ?>
+    <div class="notify error">
+        <h2><?php echo $error_msg; ?></h2>
+    </div>
+<?php endif; ?>
+
             </div>
         </div>
     </div>
 </div>
+
+<script src="reload.js"></script>
 
 </body>
 </html>

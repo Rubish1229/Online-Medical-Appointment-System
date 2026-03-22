@@ -54,7 +54,7 @@ $result=$con->query($sql);
 </style>
 <body>
 
-<?php include 'navbar.php';?>
+<?php include 'navbar2.php';?>
 
     
     <div class="mainDiv">

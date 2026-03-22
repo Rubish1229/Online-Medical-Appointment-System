@@ -1,0 +1,53 @@
+.div-container{
+  margin: 5rem 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.department-box{
+  height: 100px;
+  width: 180px;
+  border: 1px solid #0D6DFD;
+  box-shadow: 0px 10px 15px #0D6DFD;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0D6DFD;
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+}
+.department-box:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0px 15px 25px rgba(13, 109, 253, 0.6);
+  font-size: 18px;
+  
+}
+
+.department-box h3 a{
+  color: white;
+  text-decoration: none;
+}
+
+h2{
+text-align: center;          
+    font-size: 36px;             
+    font-weight: bold;          
+    color: #0D6DFD;              
+    letter-spacing: 2px;         
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.2); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+    margin-top: 8rem;
+}
+
+body {
+  background:linear-gradient(rgba(255,255,255,0.7), rgba(13,109,253,06)),url("../images/DeptBg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 800px;
+}

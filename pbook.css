@@ -13,6 +13,7 @@
     border-radius: 10px;
     padding: 20px 40px;
     
+    
 }
 .pbookleft{
     height: 93vh;
@@ -37,6 +38,7 @@
         margin-left: 20px;
         margin-top: 30px;
         margin-bottom: 20px;
+        
 }
 
 .leftside{
@@ -47,4 +49,12 @@
 }
 .rightside{
     margin-left: 60px;
+}
+
+select{
+    height: 30px;
+    text-align: center;
+    border: 2px solid #0D6DFD;
+    border-radius: 5px;
+    
 }

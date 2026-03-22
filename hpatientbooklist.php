@@ -1,6 +1,10 @@
 <?php
 
+require 'auth3.php';
 require 'Connection.php';
+
+
+$h_id = $_SESSION['h_id'];
 
 $sql="SELECT *,d_name 
 FROM medicalcard 
@@ -201,10 +205,19 @@ if (isset($_GET['delete_id'])) {
     background-color: #b52a37;
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;   /* Enables horizontal scroll */
+}
+.booking-table {
+    min-width: 900px;   /* Increase width */
+}
+
+
 </style>
 <body>
 
-<?php include 'navbar.php';  ?>
+<?php include 'navbar2.php';  ?>
 
 
 <div class="patientBookingList">
@@ -226,11 +239,11 @@ if (isset($_GET['delete_id'])) {
 
 <?php if($result->num_rows>0):?>
     
-
-    <div class="booking-table">
-    <table style="border-collapse: collapse;">
+<div class="table-wrapper">
+   
+    <table style="border-collapse: collapse;" class="booking-table">
     <tr>
-        <th>Patient_id</th>
+        <!-- <th>Patient_id</th> -->
         <th>Patient name</th>
         <th>Patient age</th>
         <th>Patient gender</th>
@@ -246,7 +259,7 @@ if (isset($_GET['delete_id'])) {
 
       <?php while($row=$result->fetch_assoc()) : ?>
         <tr>
-               <td><?= $row['patient_id'] ?></td>
+               <!-- <td><?= $row['patient_id'] ?></td> -->
                 <td><?= $row['patientName'] ?></td>
                 <td><?= $row['patientAge'] ?></td>
                 <td><?= $row['patientGender'] ?></td>
@@ -270,6 +283,7 @@ if (isset($_GET['delete_id'])) {
 
       </tr>
       <?php endwhile; ?>
+    </div>
       </table>
             <?php else: ?>
     <p>No appointments found.</p>
@@ -277,6 +291,6 @@ if (isset($_GET['delete_id'])) {
 
 </div>
 </div>
-</div>
+ <script src="reload.js"></script>
 </body>
 </html>

@@ -1,6 +1,10 @@
 <?php
 
+require 'auth3.php';
 require 'Connection.php';
+
+
+$h_id = $_SESSION['h_id'];
 
 $sql="SELECT * FROM patient";
 $result=$con->query($sql);
@@ -45,7 +49,7 @@ $result=$con->query($sql);
 </style>
 <body>
 
-<?php include 'navbar.php'  ?>
+<?php include 'navbar2.php'  ?>
 
 
    
@@ -117,5 +121,6 @@ echo "</tr>";
         </div>
     </div>
     
+     <script src="reload.js"></script>
 </body>
 </html>

@@ -2,6 +2,8 @@
 
 
 <?php
+
+
 require 'Connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -90,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <input type="text" name="dpwd" placeholder="Enter password">
                         </div>
                     </div>
-                    <button class="doctorLogin" id="doctorLogin">Login</button>
+                    <button class="doctorLogin" id="doctorLogin" style="margin-left:195px; margin-top:60px;">Login</button>
                 </form>
             </div>
         </div>

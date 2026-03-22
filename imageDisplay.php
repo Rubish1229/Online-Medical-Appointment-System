@@ -1,9 +1,10 @@
 <?php
 session_start();
+require 'auth.php';
 require 'Connection.php';
 
 if (!isset($_SESSION['p_id'])) {
-    die("Please login first.");
+    header("Location: patientlogin.php");
 }
 
 $patient_id = $_SESSION['p_id'];
@@ -53,6 +54,7 @@ $result = $stmt->get_result();
             margin-top: 20px;
             max-height: 550px;
             overflow-y: auto;
+            margin-left: 30px;
         }
 
         .appointment-card {
@@ -61,6 +63,8 @@ $result = $stmt->get_result();
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            line-height: 25px;
+           
         }
 
         .medical-image {
@@ -121,13 +125,35 @@ $result = $stmt->get_result();
 .modal-box button:hover {
     background: #084ec4;
 }
+h2{
+    text-align: center;
+      text-shadow: 2px 2px 5px rgba(13, 109, 253, 0.3); 
+      color: #0D6DFD;
+}
+.line-break{
+    height: 3px;
+    width: 100%;
+    background-color: #0D6DFD;
+    border-radius: 10px;
+}
 
+.line-close{
+    height: 35px;
+    width: 100%;
+    background-color: green;
+    border-radius: 10px;
+}
+
+.line-close h3{
+    color: white;
+    text-align: center;
+}
     </style>
 </head>
 
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php include 'navbar2.php'; ?>
 
 <div class="mainDiv" style="display:flex;">
     
@@ -155,24 +181,27 @@ $result = $stmt->get_result();
                 <p><strong>Age:</strong> <?= htmlspecialchars($row['patientAge']) ?></p>
                 <p><strong>Contact:</strong> <?= htmlspecialchars($row['patientContact']) ?></p>
                 <p><strong>Address:</strong> <?= htmlspecialchars($row['patientAddress']) ?></p>
-
-                <hr>
-
+                <br>
+               
+                <div class="line-break"></div>
+                <br>
+         
                 <p><strong>Doctor:</strong> <?= htmlspecialchars($row['d_name']) ?></p>
                 <p><strong>Department:</strong> <?= htmlspecialchars($row['departmentName']) ?></p>
-
-                <hr>
-
+                 <br>
+                <div class="line-break"></div>
+                <br>
                 <p><strong>Diagnosis:</strong><br><?= nl2br(htmlspecialchars($row['diagnosis'])) ?></p>
                 <p><strong>Prescription:</strong><br><?= nl2br(htmlspecialchars($row['prescription'])) ?></p>
-
-                <hr>
+                  <br>
+                <div class="line-break"></div>
+                <br>
 
                 <p><strong>Date:</strong> <?= htmlspecialchars($row['appointment_date']) ?></p>
                 <p><strong>Time:</strong> <?= htmlspecialchars($row['appointment_time']) ?></p>
-
-                <hr>
-
+                  <br>
+                <div class="line-break"></div>
+                <br>
                 <strong>Attached Files:</strong><br>
 
                 <?php
@@ -206,32 +235,31 @@ $result = $stmt->get_result();
                     echo "<p>No files attached.</p>";
                 }
                 ?>
-
+ <div class="line-close"><h3>Your Health, Our Responsibility.</h3></div>
             </div>
 
             <?php endwhile; ?>
         <?php else: ?>
             <p>No medical history found.</p>
         <?php endif; ?>
-
+           
         </div>
     </div>
+
 </div>
-<?php if ($fileUploaded): ?>
-<div id="uploadModal" class="modal-overlay">
-    <div class="modal-box">
-        <h3>Notification</h3>
-        <p>Report has been uploaded successfully.</p>
-        <button onclick="closeModal()">OK</button>
-    </div>
-</div>
-<?php endif; ?>
+
+
+
 <script>
 function closeModal() {
     document.getElementById('uploadModal').style.display = 'none';
 }
+
+
 </script>
 
+
+<script src="reload.js"></script>
 
 </body>
 </html>

@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+
+require 'auth1.php';
 require 'Connection.php';
 
 if (!isset($_GET['edit_id'])) {
@@ -8,9 +11,7 @@ if (!isset($_GET['edit_id'])) {
 
 $card_id = (int) $_GET['edit_id'];
 
-/* ===============================
-   FETCH EXISTING CARD DATA
-================================ */
+
 $stmt = $con->prepare(
     "SELECT diagnosis, prescription 
      FROM medicalcard 
@@ -27,9 +28,7 @@ if ($result->num_rows === 0) {
 $row = $result->fetch_assoc();
 $upload_message = "";
 
-/* ===============================
-   HANDLE UPDATE + FILE UPLOAD
-================================ */
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     /* ---- Update Diagnosis & Prescription ---- */
@@ -103,12 +102,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="./css/image.css">
     <style>
+        
         .doctorEdit {
             margin: auto;
-            border: 2px solid #0D6DFD;
-            width: 565px;
-            padding: 30px;
+            border: 2px solid gray;
+            width: 850px;
+            height: 600px;
+            padding: 30px 80px;
             border-radius: 7px;
+            box-shadow: 5px 5px 10px #0D6DFD;
+            
         }
         .doctorEditbtn {
             background: #0D6DFD;
@@ -120,11 +123,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: block;
             margin: 20px auto;
         }
-        h2{
-            margin-top: 85px;
-            margin-bottom: 30px;
-        }
-
+       h2{
+    text-align: center;
+      text-shadow: 2px 2px 5px rgba(13, 109, 253, 0.3); 
+      color: #0D6DFD;
+      margin-top: 90px;
+      margin-bottom: 10px;
+}
         .btn-group {
     display: flex;
     justify-content: space-around;
@@ -132,42 +137,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     margin-top: 15px;
 }
 
+textarea{
+    border-radius: 5px;
+    border: 2px solid #0D6DFD;
+    font-size: 18px;
+}
+
+.medicalFiles{
+    display: flex;
+    gap: 10px;
+}
+
+.fileInput {
+    padding: 1px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.fileInput:hover {
+    background-color: #b3cef7;
+}
+.doctorEditbtn{
+    height: 40px;
+    font-size: 16px;
+}
+.doctorEditbtn:hover{
+    background-color: #0750bd;
+}
     </style>
 </head>
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php include 'navbarDoctor.php'; ?>
 
-<h2 style="text-align:center;">Edit Diagnosis & Prescription</h2>
+<h2>Add Diagnosis & Prescriptions</h2>
 
 <div class="doctorEdit">
 
 <form method="POST" enctype="multipart/form-data">
 
-    <label>Diagnosis</label><br>
+    <label> <h3>Diagnosis</h3></label><br>
     <textarea name="diagnosis" rows="6" cols="60"><?= htmlspecialchars($row['diagnosis']) ?></textarea><br><br>
 
-    <label>Prescription</label><br>
+    <label><h3>Prescription</h3></label><br>
     <textarea name="prescription" rows="6" cols="60"><?= htmlspecialchars($row['prescription']) ?></textarea><br><br>
 
-    <label>Attach Medical File</label><br>
-    <input type="file" name="medical_file"><br><br>
-
+   <div class="medicalFiles">
+    <label><b>Attach Medical File</b></label><br>
+    <input type="file" name="medical_file" class="fileInput"><br><br>
+</div>
     <div class="btn-group">
     <button type="submit" name="upload_file" class="doctorEditbtn">Upload File</button>
-    <button type="submit" name="update" class="doctorEditbtn">Update</button>
+    <button type="submit" name="update" class="doctorEditbtn">Update report </button>
     </div>
 </form>
 
 <?php
 if (!empty($upload_message)) {
-    echo "<p style='margin-top:15px;color:green;text-align:center;'>"
+    echo "<p style='margin-top:7px;color:green;text-align:center; font-weight:700'>"
         . htmlspecialchars($upload_message) .
         "</p>";
 }
 ?>
 
 </div>
+<script src="newreload.js"> </script>
+
 
 </body>
 </html>

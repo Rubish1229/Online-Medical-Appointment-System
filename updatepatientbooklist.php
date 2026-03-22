@@ -1,14 +1,10 @@
 <?php
 require 'Connection.php';
 
-// --------------------------------------------------
-// 1. LOAD DEPARTMENTS FOR FIRST DROPDOWN
-// --------------------------------------------------
+
 $resultDept = $con->query("SELECT dept_id, dept_name FROM department");
 
-// --------------------------------------------------
-// 2. LOAD EXISTING MEDICAL CARD DATA
-// --------------------------------------------------
+
 if (isset($_GET['card_id'])) {
     $card_id = $_GET['card_id'];
 
@@ -22,9 +18,7 @@ if (isset($_GET['card_id'])) {
 }
 
 
-// --------------------------------------------------
-// 3. SHOW DOCTORS OF SELECTED DEPARTMENT
-// --------------------------------------------------
+
 $doctors = [];
 if (isset($_POST['show_doctors'])) {
     $dept_id = $_POST['dept_id'];
@@ -70,9 +64,6 @@ if (isset($_POST['update'])) {
 }
 ?>
 
-<!-- --------------------------------------------------
-     5. FORM 1 → SELECT DEPARTMENT (SHOW DOCTORS)
----------------------------------------------------- -->
 
 <form method="POST" action="">
     <input type="hidden" name="card_id" value="<?= $row['card_id'] ?>">
@@ -93,14 +84,9 @@ if (isset($_POST['update'])) {
 <br>
 <hr><br>
 
-<!-- --------------------------------------------------
-     6. FORM 2 → UPDATE CARD
----------------------------------------------------- -->
-
 <form method="POST" action="">
     <input type="hidden" name="card_id" value="<?= $row['card_id'] ?>">
 
-    <!-- IMPORTANT: SEND DEPT_ID DURING UPDATE -->
     
 
     <label>Doctor:</label>
